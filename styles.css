@@ -1,0 +1,1526 @@
+:root {
+    --primary-color: #2E233A;
+    --secondary-color: #B8A7D3;
+    --accent-color: #9B8BB4;
+    --text-color: #333;
+    --light-color: #fff;
+    --gold-accent: #d4af37;
+    --spacing: 2rem;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Castoro Titling';
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #f9f7f3, #ffffff); /* 부드러운 배경 그라데이션 */
+}
+
+main {
+    flex: 1;
+}
+
+/* Header & Navigation */
+navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.7); /* 더 진한 배경으로 고급스러움 */
+}
+.navbar {
+    /* background-color: transparent; */
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    position: fixed;
+    font-family: 'Castoro Titling';
+    background: linear-gradient(to bottom, black, transparent);
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;;    
+
+}
+.nav-list .list-item {
+display: inline-block; /* 높이를 향향하게 못둠 */
+}
+.logo {
+    margin-top: 20px; /* Adjust this value to move the logo further down */
+}
+.logo img {
+  height: 95.5px; /* 기존 높이의 1.5배 */
+  width: auto; /* 비율 유지 */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 3.5rem;
+}
+
+.navbar a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+.navbar a:hover {
+    color: var(--secondary-color);
+    /* color: #d4af37 !important; */
+    transform: scale(1.05); /* 로고 호버 시 약간 확대 */
+}
+
+.navbar a:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.navbar a.logo:hover {
+    color: inherit; /* Maintain original color */
+    transform: none; /* No movement */
+}
+
+.navbar a.logo:hover::after {
+    width: 0; /* No underline effect */
+}
+
+/* Override hover effects for booking-link */
+.navbar a.booking-link:hover {
+    color: #d4af37 !important;
+    transform: scale(1.05);
+    border: 2px solid #d4af37;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+ 
+}
+
+.navbar a.booking-link:hover::after {
+    display: none;
+}
+
+.booking-link {
+    background-color: #2C233A;
+    color: white !important;
+    padding: 17px 24px;
+    font-size: 1.0rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+.mobile-nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    background-color: var(--light-color);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+        position: relative;
+        z-index: 1001;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+    .booking-link {
+        display: block;
+        /* background-color: #d4af37; */
+        background-color: #2C233A;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 50%;
+        background-color: rgba(184, 167, 211, 0.95);  
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 40px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    .navbar ul.active {
+        right: 0;
+    }
+
+    .navbar ul .list-item a {
+        color: #2E233A;
+        font-weight: 600;
+    }
+    
+    .navbar ul .list-item a:hover {
+        color: #000;
+    }
+
+    nav ul li {
+        margin: 0.2rem 0;
+    }
+
+    .mobile-nav-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--light-color);
+        margin: 5px 0px;
+        transition: var(--transition);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+        text-align: left;
+    }
+    
+    .stylist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        transform: none !important; /* Prevent sliding transformation */
+        transition: none !important; /* Disable transition */
+        display: grid !important; /* Ensure grid display */
+        width: 100% !important; /* Full width */
+    }
+    
+    .slider-nav, 
+    .slider-dots {
+        display: none !important;
+    }
+    
+    .stylist-slider-container {
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+    
+    .stylist-card {
+        height: 300px;
+        margin-bottom: 10px;
+    }
+    
+    .stylist-image {
+        height: 220px;
+    }
+    
+    .stylist-info {
+        /* padding: 8px 5px 6px; */
+        padding: 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 75px;
+    }
+    
+    .stylist-info h3 {
+        font-size: 0.9rem;
+        margin-top: 3px;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info p {
+        font-size: 0.75rem;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info .specialty,
+    .stylist-info .languages {
+        font-size: 0.7rem;
+        line-height: 1.1;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info .languages {
+        margin-bottom: 0;
+    }
+    
+    .members-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 80vh;
+    background-image: url('bg1.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light-color);
+    filter: brightness(1.5); /* Increase brightness */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: normal;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        background-color: #C4A35A;
+        font-weight: bold;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        font-size: 1.1rem;
+    }
+    
+    .cta-button:hover {
+        /* background-color: #d4af37; */
+        color: #C4A35A;
+        transform: translateY(-3px);
+    }
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #2C233A;
+    color: var(--light-color);
+    font-family: 'Castoro Titling';
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    color: #d4af37bd;
+    transform: scale(1.05);
+    border: 2px solid #d4af37bd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Services Section */
+.services-container {
+    width: 70%;
+    margin: auto;
+  }
+  .services-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    font-style: italic;
+  }
+  
+  .services-container a{
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .service-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .service-header {
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .service-content {
+    display: none;
+    margin-top: 10px;
+  }
+  
+  .book-button {
+    /* margin-top: 10px; */
+    padding: 6px 12px 4px;
+    background-color: #52416e;
+    border: none;
+    color: white !important;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+
+.book-button:hover {
+    /* background-color: #c19b2e; */
+    /* transform: translateY(-2px); */
+    color: #B8A7D3 !important;
+    
+    /* transform: scale(1.05); */
+    border: 2px solid #B8A7D3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;    /* 상하 패딩 증가 */
+      margin: 10px 0;     /* 상하 마진 추가 */
+      border-bottom: 1px solid #eee;
+  }
+    
+  .service-content {
+      padding: 15px 0;    /* 전체 컨텐츠 영역 패딩 추가 */
+  }
+
+@media (max-width: 768px) {
+    .book-button {
+        padding: 7px 10px 6px;
+        font-size: 0.8rem;
+        border-radius: 16px;
+    }
+    
+    /* .book-button:hover {
+    
+    }
+    
+     */
+    .service-row {
+        gap: 15px;
+    }
+    
+    .service-row p {
+        flex: 1;
+        word-break: break-word; /* Add word break for long text */
+        hyphens: auto; /* Enable hyphenation */
+    }
+}
+
+@media (max-width: 600px) {
+    .service-row {
+        gap: 20px; /* Reduced from 20px to give more space for text */
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .service-row p {
+        flex: 1;
+        min-width: 50%;
+    }
+    
+    .service-row .book-button {
+        margin-left: auto; /* Push button to the right */
+    }
+}
+
+/* Our Team */
+.stylist-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 3rem auto;
+    overflow: visible;
+    padding: 0 40px;
+}
+
+.stylist-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.stylist-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stylist-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-nav, .slider-dots {
+    display: none;
+}
+
+.stylist-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.stylist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.stylist-card:hover .stylist-image img {
+    transform: scale(1.05);
+}
+
+.stylist-info {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* padding: 0.4rem 0.3rem 0.2rem 0.3rem; */
+}
+
+.stylist-info h3 {
+    font-family: 'Castoro Titling';
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.stylist-info p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.stylist-info .specialty,
+.stylist-info .languages {
+    display: block;
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+    .stylist-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .stylist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stylist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        transform: none !important; /* Prevent sliding transformation */
+        transition: none !important; /* Disable transition */
+        display: grid !important; /* Ensure grid display */
+        width: 100% !important; /* Full width */
+    }
+    
+    .slider-nav, 
+    .slider-dots {
+        display: none !important;
+    }
+    
+    .stylist-slider-container {
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+    
+    .stylist-card {
+        height: 300px;
+        margin-bottom: 10px;
+    }
+    
+    .stylist-image {
+        height: 220px;
+    }
+    
+    .stylist-info {
+        /* padding: 8px 5px 6px; */
+        padding: 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 75px;
+    }
+    
+    .stylist-info h3 {
+        font-size: 0.9rem;
+        margin-top: 3px;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info p {
+        font-size: 0.75rem;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info .specialty,
+    .stylist-info .languages {
+        font-size: 0.7rem;
+        line-height: 1.1;
+        margin-bottom: 2px;
+    }
+    
+    .stylist-info .languages {
+        margin-bottom: 0;
+    }
+    
+    .members-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Members Section */
+.members-section {
+    padding: 4rem 2rem;
+    background-color: rgba(184, 167, 211, 0.05);
+    border-radius: 15px;
+    margin: 3rem auto;
+}
+
+.members-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.members-header .subtitle {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 2rem;
+}
+
+.members-header h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    
+    margin-top: 2.5rem;
+    position: relative;
+    font-style: italic;
+}
+
+.members-content {
+    text-align: center;
+}
+
+.members-content > p {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .members-section {
+        padding: 2rem 1rem;
+    }
+    
+    .members-header h2 {
+        font-size: 2rem;
+    }
+    
+    .members-content > p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Gallery Section */
+    
+.gallery {
+    padding: 40px 10px;
+    background-color: #f0f0f5; 
+    margin-bottom: 50px; 
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery-header .subtitle {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-family: 'Castoro Titling';
+    color: var(--secondary-color);
+}
+
+.gallery-header h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.gallery-header .hashtag {
+    display: block;
+    font-size: 1.4em;
+    color: #888;
+    font-style: italic;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay i {
+    color: white;
+    font-size: 2em;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .gallery-header h2 {
+        font-size: 2em;
+    }
+
+    .gallery-header .hashtag {
+        font-size: 1.2em;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+
+
+.members-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: auto;
+}
+
+.stylist-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: var(--light-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 410px;
+}
+
+
+.services-category {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service-column {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 15px;
+  width: 400px; /* 일정한 크기 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-column:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+h2, h3, h4 {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-family: 'Castoro Titling';
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+
+
+/* Direction Section */
+.direction-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: var(--light-color);
+}
+.direction-section .book-visit,
+.direction-section .map-container {
+    flex: 1; /* Ensure both take equal space */
+    margin: 0 1rem; /* Add equal margin on both sides */
+}
+
+
+.direction-section .map-container {
+   width: 70%;
+   height: 400px;
+   /* margin: 0 auto; */
+}
+
+.book-visit {
+ background-color: #ffffff;
+ border-radius: 15px;
+ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ padding: 40px;
+
+ width:  30%;
+ height: 300px;
+ border: 0;
+ object-fit: cover;
+
+}
+
+.address-box, .contact-box {
+ margin-top: 15px;
+ font-size: 1rem;
+ color: #333;
+}
+
+.hours-list {
+ border-bottom: 1px solid #eee;
+ padding: 10px 0;
+}
+.hour-item {
+ display: flex;
+ justify-content: space-between;
+ padding: 5px 0;
+ font-size: 1rem;
+ gap: 10px; /* 간격을 늘리기 위해 추가 */
+}
+
+.direction-btn:hover {
+ background-color: #B8A7D3;
+}
+ 
+@media (max-width: 768px) {
+   .direction-section {
+       flex-direction: column; /* Stack elements vertically */
+       align-items: center; /* Center align items */
+   }
+
+       
+   .direction-section .map-container {
+       width: 100%; /* Full width on mobile */
+       height: auto; /* Maintain aspect ratio */
+       display: flex;
+       justify-content: center;
+   }
+
+   .direction-section .book-visit,
+   .direction-section .map-container {
+       width: 100%; /* Full width on mobile */
+       margin-bottom: 2rem; /* Add space between elements */
+   }
+
+   .direction-section iframe {
+       width: 100%; /* Full width for the map */
+       height: 300px; /* Adjust height as needed */
+   }
+}
+
+.policy-container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background-color: transparent;
+}
+
+.policy-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.7rem;
+    margin-bottom: 35px;
+    font-family: 'Castoro Titling';
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.policy-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gold-accent);
+}
+
+.policy-section {
+    margin-bottom: 20px;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.policy-section h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    text-align: left;
+    font-weight: 500;
+    font-family: 'Castoro Titling';
+    background-color: var(--primary-color);
+    padding: 12px 18px;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+}
+
+.policy-section h4::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--gold-accent);
+}
+
+.policy-section p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0;
+    padding: 18px;
+    background-color: white;
+    border: 1px solid #eee;
+    border-top: none;
+    font-size: 0.95rem;
+}
+
+.policy-section p:last-of-type {
+    border-radius: 0 0 8px 8px;
+}
+
+.policy-section p + p {
+    border-top: 1px solid #f5f5f5;
+    padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .policy-container {
+        width: 90%;
+        margin: 25px auto;
+        padding: 15px 10px;
+    }
+    
+    .policy-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .policy-section {
+        width: 95%;
+    }
+    
+    .policy-section h4 {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+    
+    .policy-section p {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Business Info Section */
+#business-info {
+    background-color: #2C233A;
+    color: white;
+    padding: 60px 0;
+}
+
+.business-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.business-container h1 {
+    text-align: center;
+    font-family: 'Castoro Titling';
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+.business-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 130px;
+    align-items: start;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: 5%;
+    transform: translateX(15%);
+}
+
+.business-hours h2 {
+    font-family: 'Castoro Titling';
+    font-size: 1.2rem;
+    margin: 30px 0 20px;
+    color: white;
+}
+
+.business-hours h2:first-child {
+    margin-top: 0;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-family: 'Castoro Titling';
+}
+
+.business-hours p {
+    font-family: 'Castoro Titling';
+    margin: 10px 0;
+}
+
+.business-map {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.business-map iframe {
+    width: 150%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.business-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 20px; /* Add spacing between icons */
+    flex-direction: row; /* Ensure horizontal layout */
+}
+
+.instagram-icon, .Facebook-icon, .Youtube-icon, .LinkedIn-icon {
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.instagram-icon:hover, .Facebook-icon:hover, .Youtube-icon:hover, .LinkedIn-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Set specific size for YouTube, LinkedIn, and Facebook icons */
+.Youtube-icon, .LinkedIn-icon, .Facebook-icon {
+    width: 28px;
+    height: 28px;
+}
+
+@media (max-width: 768px) {
+    .policy-container {
+        width: 100%;
+        max-width: none;
+        margin: 30px 0;
+        padding: 20px 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .policy-section {
+        width: 100%;
+        padding: 15px 10px;
+        margin-bottom: 15px;
+        border-radius: 0;
+    }
+    
+    .business-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        transform: translateX(0);
+    }
+    
+    .business-hours {
+        padding-left: 10px;
+        text-align: left;
+        margin-left: 0;
+    }
+    
+    .business-map {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .business-map iframe {
+        width: 90%;
+        height: 250px;
+    }
+    
+    .business-social {
+        text-align: center;
+    }
+}
+
+/* ABOUT US Section */
+.about {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 'Cormorant Garamond' */
+.about-header h2 {
+    font-family: 'Castoro Titling';
+    font-size: 2.5rem;
+    color: #2c2c2c;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(184, 167, 211, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.about-text {
+    text-align: left;
+    padding: 1rem;
+}
+
+.about-text p, .about-services p, .about-booking p {
+    margin-bottom: 1rem;
+    font-family: 'Castoro Titling';
+    line-height: 1.6;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-services {
+    text-align: left;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.services-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 0;
+    font-family: 'Castoro Titling';
+}
+
+.services-list li::before {
+    content: none;
+}
+
+.about-booking {
+    text-align: left;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.about-booking p {
+    font-family: 'Castoro Titling';
+    text-align: left;
+}
+.booking-cta {
+    font-weight: bold;
+    /* margin: 1.5rem 0; */
+    font-size: 1.0rem;
+}
+
+.about-footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    text-align: center; 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-footer h3 {
+    font-family: 'Castoro Titling';
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 100px;
+    background-color: var(--primary-color);
+    margin: 1.5rem auto;
+    opacity: 0.6;
+}
+
+.vision-mission {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Castoro Titling';
+    line-height: 1.8;
+    color: #4a4a4a;
+}
+
+.vision-mission p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.vision-mission .vision {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 4rem 1rem;
+    }
+    
+    .about-header h2 {
+        font-size: 2rem;
+    }
+    
+    .about-content p {
+        font-size: 1rem;
+    }
+
+    /* Adjusting all about grid sections for mobile view */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        position: relative;
+        margin-bottom: 4rem; /* Add space between grid sections */
+    }
+
+    .about-image {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+    }
+
+    /* First grid section - about-text over image */
+    .about-grid:nth-child(1) .about-text {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    /* Second grid section - about-services over image */
+    .about-grid:nth-child(2) .about-services {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    
+    .about-grid:nth-child(2) .services-list {
+        text-align: left;
+        padding-left: 0;
+    }
+
+    /* Third grid section - about-booking over image */
+    .about-grid:nth-child(3) .about-booking {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 1rem 1.5rem; /* Reduced top/bottom padding from 1.5rem to 1rem */
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    
+    /* .about-grid:nth-child(3) .about-booking p {
+        font-weight: bold;
+    } */
+    
+    /* General styling for paragraphs */
+    .about-text p, .about-services p {
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Add specific margin for about-booking paragraphs */
+    .about-booking p {
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-grid:nth-child(1) .about-text,
+    .about-grid:nth-child(2) .about-services {
+        padding: 1.2rem;
+        width: 85%;
+    }
+    
+    .about-grid:nth-child(3) .about-booking {
+        padding: 0.8rem 1.2rem; /* Further reduced for mobile */
+        width: 85%;
+        text-align: left;
+    }
+    
+    .about-text p, .about-services p, .about-booking p {
+        font-size: 0.9rem;
+    }
+    
+    .services-list li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Stylist grid and members section styles */
+@media (max-width: 600px) {
+    .stylist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .members-section {
+        padding: 2rem 1rem;
+    }
+}
