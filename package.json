@@ -4,9 +4,21 @@
   "description": "Adele Hair & Beauty Salon Website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node build-script.js",
+    "build-simple": "npm run clean && npm run copy-files && npm run optimize",
+    "clean": "rm -rf build",
+    "copy-files": "mkdir -p build && cp -r *.html *.css *.js optimized-images build/ && cp server.js build/",
+    "optimize": "echo 'Build completed successfully!'",
+    "serve-build": "cd build && node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  }
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

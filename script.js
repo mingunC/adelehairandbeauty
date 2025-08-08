@@ -37,13 +37,3 @@ const revealOnScroll = () => {
 
 window.addEventListener('scroll', revealOnScroll);
 
-// Service Cards Hover Effect
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.classList.add('hover');
-    });
-    card.addEventListener('mouseleave', () => {
-        card.classList.remove('hover');
-    });
-});
