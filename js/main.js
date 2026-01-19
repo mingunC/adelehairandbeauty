@@ -501,4 +501,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // ========== Footer Links Logic ==========
+    const businessPoliciesLink = document.getElementById('openBusinessPolicies');
+    const aboutUsLink = document.getElementById('openAboutUs');
+    const aboutSection = document.getElementById('about');
+
+    function showAboutSection(e) {
+        e.preventDefault();
+        if (aboutSection) {
+            // Ensure section is visible if it was hidden
+            aboutSection.style.display = 'block';
+
+            // Scroll to it smoothly
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    if (businessPoliciesLink) {
+        businessPoliciesLink.addEventListener('click', showAboutSection);
+    }
+
+    if (aboutUsLink) {
+        aboutUsLink.addEventListener('click', showAboutSection);
+    }
 });

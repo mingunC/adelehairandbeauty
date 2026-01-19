@@ -35,8 +35,9 @@
   <!-- Header - Luxury Style -->
   <nav class="navbar">
     <div class="logo">
-      <a href="#home">
-        <img class="primary-icon" src="optimized-images/logo11.jpg" alt="Adele Hair & Beauty">
+      <a href="#home" class="logo-text">
+        <span>ADELE</span>
+        <span>HAIR AND BEAUTY</span>
       </a>
     </div>
     <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -48,7 +49,10 @@
       <!-- Mobile Menu Header (Logo + Close) -->
       <li class="mobile-menu-header">
         <div class="menu-logo">
-          <img src="optimized-images/logo11.jpg" alt="Adele Hair & Beauty">
+          <a href="#home" class="logo-text mobile-logo-text">
+            <span>ADELE</span>
+            <span>HAIR AND BEAUTY</span>
+          </a>
         </div>
         <button class="menu-close-btn" onclick="toggleMobileNav()">
           <i class="fas fa-times"></i>
@@ -149,7 +153,7 @@
       <!-- Fallback Image for browsers that don't support video -->
       <img src="optimized-images/bg1.webp" alt="Adele Hair & Beauty Salon" class="hero-background hero-fallback">
       <div class="hero-content">
-        <h1>ADELE HAIR & BEAUTY</h1>
+
         <p>EXPERIENCE LUXURY BEAUTY IN EVERY DETAIL</p>
         <a href="https://adelehairandbeauty.square.site" class="cta-button" target="_blank">BOOK NOW</a>
       </div>
@@ -1359,12 +1363,13 @@
                   }).addTo(map);
 
                   // Custom Icon Definition
-                  const luxuryIcon = L.icon({
-                    iconUrl: 'optimized-images/logo1.png', // Using the logo found earlier
-                    iconSize: [45, 45], // Adjusted size
-                    iconAnchor: [22, 22], // Center anchor
-                    popupAnchor: [0, -25],
-                    className: 'luxury-marker' // For CSS styling (circle shape, shadow)
+                  // Custom HTML Marker with Text
+                  const luxuryIcon = L.divIcon({
+                    className: 'luxury-text-marker',
+                    html: '<div class="marker-pin"><span>ADELE<br>HAIR &<br>BEAUTY</span></div>',
+                    iconSize: [60, 60],
+                    iconAnchor: [30, 30], // Center it
+                    popupAnchor: [0, -30]
                   });
 
                   // Location 1: North York
@@ -1515,11 +1520,19 @@
 
     <!-- Footer Section -->
     <footer>
-      <div class="footer-content">
-        <!-- <div class="social-links">
-                    <a href="https://www.instagram.com/adelehairtoronto" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                </div> -->
-        <p>&copy; 2025 Adele Hair & Beauty. All rights reserved.</p>
+      <div class="footer-container">
+        <div class="footer-left">
+          <!-- Ship to removed per user request -->
+        </div>
+        <div class="footer-center">
+          <h2 class="footer-logo-text">ADELE HAIR AND BEAUTY</h2>
+        </div>
+        <div class="footer-right">
+          <ul class="footer-links">
+            <li><a href="#" id="openBusinessPolicies">Business Policies</a></li>
+            <li><a href="#" id="openAboutUs">About Us</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
   </main>
