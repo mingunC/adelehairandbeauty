@@ -26,104 +26,122 @@ body {
     min-height: 50vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #f9f7f3, #ffffff); /* 부드러운 배경 그라데이션 */
+    background: linear-gradient(135deg, #f9f7f3, #ffffff);
+    /* 부드러운 배경 그라데이션 */
 }
 
 main {
     flex: 1;
 }
 
-/* Header & Navigation */
-navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.7); /* 더 진한 배경으로 고급스러움 */
+/* Hidden Sections for new design */
+.policy-container,
+#gallery,
+#about {
+    display: none;
 }
+
+/* Header & Navigation - Louis Vuitton Inspired */
+navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
 .navbar {
-    /* background-color: transparent; */
     display: flex;
-    justify-content: space-around; 
+    justify-content: flex-end;
     align-items: center;
     position: fixed;
     font-family: 'Castoro Titling';
-    background: linear-gradient(to bottom, black, transparent);
+    background-color: rgba(255, 255, 255, 0.98);
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: background-color 0.3s ease-in-out;;    
+    transition: all 0.3s ease-in-out;
+    padding: 0 5%;
+    height: 80px;
+}
 
-}
 .nav-list .list-item {
-display: inline-block; /* 높이를 향향하게 못둠 */
+    display: inline-block;
 }
+
 .logo {
-    margin-top: 20px; /* Adjust this value to move the logo further down */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1001;
 }
+
 .logo img {
-  height: 95.5px; /* 기존 높이의 1.5배 */
-  width: auto; /* 비율 유지 */
+    height: 80px;
+    width: auto;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 3.5rem;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 .navbar a {
-    color: var(--light-color);
+    color: #1a1a1a;
     text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
     position: relative;
+    text-transform: uppercase;
 }
+
 .navbar a:hover {
-    color: var(--secondary-color);
-    /* color: #d4af37 !important; */
-    transform: scale(1.05); /* 로고 호버 시 약간 확대 */
+    color: #8b7ba8;
 }
 
 .navbar a:hover::after {
     content: '';
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 1px;
     bottom: -5px;
     left: 0;
-    background-color: var(--secondary-color);
-    transition: var(--transition);
+    background-color: #1a1a1a;
+    transition: all 0.3s ease;
 }
 
 .navbar a.logo:hover {
-    color: inherit; /* Maintain original color */
-    transform: none; /* No movement */
+    color: inherit;
+    transform: none;
 }
 
 .navbar a.logo:hover::after {
-    width: 0; /* No underline effect */
+    width: 0;
 }
 
-/* Override hover effects for booking-link */
-.navbar a.booking-link:hover {
-    color: #d4af37 !important;
-    transform: scale(1.05);
-    border: 2px solid #d4af37;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
- 
+/* Instagram icon in navbar */
+.navbar .instagram-link {
+    font-size: 1.2rem;
+    color: #1a1a1a;
 }
 
-.navbar a.booking-link:hover::after {
+.navbar .instagram-link:hover {
+    color: #8b7ba8;
+}
+
+.navbar .instagram-link:hover::after {
     display: none;
 }
 
-.booking-link {
-    background-color: #2C233A;
-    color: white !important;
-    padding: 17px 24px;
-    font-size: 1.0rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* Hide booking link from main nav - moved to hero */
+.navbar .booking-link {
+    display: none;
 }
 
 .mobile-nav-toggle {
@@ -132,20 +150,35 @@ display: inline-block; /* 높이를 향향하게 못둠 */
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    z-index: 1000;
+    z-index: 1002;
 }
 
 .mobile-nav-toggle span {
     display: block;
-    width: 25px;
-    height: 10px;
-    background-color: var(--light-color);
-    margin: 5px 0;
-    transition: var(--transition);
+    width: 22px;
+    height: 2px;
+    background-color: #1a1a1a;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+/* Hide fallback image when video is playing */
+.hero-video:not([src=""])~.hero-fallback {
+    display: none;
 }
 
 /* Mobile Navigation */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0 4%;
+        height: 70px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
     .mobile-nav-toggle {
         display: block;
         position: relative;
@@ -155,30 +188,10 @@ display: inline-block; /* 높이를 향향하게 못둠 */
         cursor: pointer;
         padding: 0.5rem;
     }
-    .booking-link {
-        display: block;
-        /* background-color: #d4af37; */
-        background-color: #2C233A;
-        color: white;
-        padding: 12px 20px;
-        border-radius: 25px;
-        text-align: center;
-        margin-top: 15px;
-        font-weight: bold;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-        animation: pulse 2s infinite;
-    }
 
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        100% {
-            transform: scale(1);
-        }
+    .mobile-nav-toggle span {
+        background-color: #1a1a1a;
+        height: 2px;
     }
 
     .navbar ul {
@@ -186,40 +199,64 @@ display: inline-block; /* 높이를 향향하게 못둠 */
         top: 0;
         right: -100%;
         height: 100vh;
-        width: 50%;
-        background-color: rgba(184, 167, 211, 0.95);  
+        width: 100%;
+        background-color: #fff;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 80px 40px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0;
+        padding-top: 70px;
         transition: right 0.3s ease;
         z-index: 1000;
+        box-shadow: none;
+    }
+
+    /* Divider line between header and menu */
+    .navbar ul::before {
+        content: '';
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e0e0e0;
     }
 
     .navbar ul.active {
         right: 0;
     }
 
-    .navbar ul .list-item a {
-        color: #2E233A;
-        font-weight: 600;
+    .navbar ul .list-item {
+        width: 100%;
+        text-align: left;
+        padding: 18px 20px;
+        border-bottom: 1px solid #e0e0e0;
     }
-    
+
+    .navbar ul .list-item a {
+        font-family: 'Jost', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: #1a1a1a;
+        letter-spacing: 0.5px;
+        text-transform: none;
+    }
+
     .navbar ul .list-item a:hover {
-        color: #000;
+        color: #8b7ba8;
     }
 
     nav ul li {
-        margin: 0.2rem 0;
+        margin: 0;
     }
 
     .mobile-nav-toggle span {
         display: block;
-        width: 25px;
-        height: 3px;
-        background-color: var(--light-color);
-        margin: 5px 0px;
-        transition: var(--transition);
+        width: 22px;
+        height: 2px;
+        background-color: #1a1a1a;
+        margin: 6px 0;
+        transition: all 0.3s ease;
     }
 
     .mobile-nav-toggle.active span:nth-child(1) {
@@ -234,35 +271,39 @@ display: inline-block; /* 높이를 향향하게 못둠 */
         transform: rotate(-45deg) translate(7px, -6px);
         text-align: left;
     }
-    
+
     .stylist-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        transform: none !important; /* Prevent sliding transformation */
-        transition: none !important; /* Disable transition */
-        display: grid !important; /* Ensure grid display */
-        width: 100% !important; /* Full width */
+        transform: none !important;
+        /* Prevent sliding transformation */
+        transition: none !important;
+        /* Disable transition */
+        display: grid !important;
+        /* Ensure grid display */
+        width: 100% !important;
+        /* Full width */
     }
-    
-    .slider-nav, 
+
+    .slider-nav,
     .slider-dots {
         display: none !important;
     }
-    
+
     .stylist-slider-container {
         overflow: visible !important;
         padding: 0 !important;
     }
-    
+
     .stylist-card {
         height: 300px;
         margin-bottom: 10px;
     }
-    
+
     .stylist-image {
         height: 220px;
     }
-    
+
     .stylist-info {
         /* padding: 8px 5px 6px; */
         padding: 20px 20px 20px;
@@ -271,44 +312,58 @@ display: inline-block; /* 높이를 향향하게 못둠 */
         justify-content: space-between;
         height: 75px;
     }
-    
+
     .stylist-info h3 {
         font-size: 0.9rem;
         margin-top: 3px;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info p {
         font-size: 0.75rem;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info .specialty,
     .stylist-info .languages {
         font-size: 0.7rem;
         line-height: 1.1;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info .languages {
         margin-bottom: 0;
     }
-    
+
     .members-section {
         padding: 2rem 1rem;
     }
 }
 
-/* Hero Section */
+/* Hero Section - Luxury Style */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--light-color);
     overflow: hidden;
+    margin-top: 0;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero-background {
@@ -319,7 +374,7 @@ display: inline-block; /* 높이를 향향하게 못둠 */
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.5); /* Make the image darker */
+    filter: brightness(0.7);
     z-index: 0;
 }
 
@@ -330,111 +385,429 @@ display: inline-block; /* 높이를 향향하게 못둠 */
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: 2rem;
-    margin-top: 3rem;
+    margin-top: 0;
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    font-weight: normal;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    line-height: 1.3;
+}
+
+/* Luxury CTA Button - Louis Vuitton Style */
+.cta-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background-color: transparent;
+    color: var(--light-color);
+    font-family: 'Castoro Titling';
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: var(--light-color);
+    color: #1a1a1a;
+    border-color: var(--light-color);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        padding: 15px 40px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 0.75rem;
     }
-    
+
     .hero-content p {
-        font-size: 1rem;
-        margin-bottom: 2.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
     }
-    
+
     .cta-button {
-        padding: 12px 24px;
-        background-color: #C4A35A;
-        font-weight: bold;
-        border-radius: 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        font-size: 1.1rem;
-    }
-    
-    .cta-button:hover {
-        /* background-color: #d4af37; */
-        color: #C4A35A;
-        transform: translateY(-3px);
+        padding: 14px 35px;
+        font-size: 0.75rem;
     }
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #2C233A;
-    color: var(--light-color);
-    font-family: 'Castoro Titling';
-    text-decoration: none;
-    border-radius: 5px;
+/* Service Category Grid - Louis Vuitton Style */
+.service-categories {
+    padding: 60px 5%;
+    background-color: #fff;
+}
+
+.service-categories h2 {
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-item {
+    text-align: center;
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-.cta-button:hover {
-    color: #d4af37bd;
-    transform: scale(1.05);
-    border: 2px solid #d4af37bd;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-item img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+
+.category-item span {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-categories {
+        padding: 40px 4%;
+    }
+
+    .service-categories h2 {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .category-item img {
+        margin-bottom: 10px;
+    }
+
+    .category-item span {
+        font-size: 1.2rem;
+    }
+}
+
+/* ======================================
+   Service Category Modal - Luxury Style
+   ====================================== */
+
+/* Modal Overlay */
+.service-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.service-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Container */
+.service-modal {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 450px;
+    max-width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 2001;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-modal.active {
+    right: 0;
+}
+
+/* Modal Header */
+.modal-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 10;
+}
+
+.modal-header h2 {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1a1a1a;
+    padding: 5px;
+    transition: opacity 0.2s ease;
+}
+
+.modal-close:hover {
+    opacity: 0.6;
+}
+
+/* Modal Content */
+.modal-content {
+    padding: 0;
+}
+
+/* Accordion Service Items */
+.service-accordion {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.service-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.service-accordion-header:hover {
+    background-color: #f8f8f8;
+}
+
+.service-accordion-header h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.service-accordion-header .accordion-icon {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    transition: transform 0.3s ease;
+}
+
+.service-accordion.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+/* Accordion Content */
+.service-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #fafafa;
+}
+
+.service-accordion.active .service-accordion-content {
+    max-height: 1000px;
+}
+
+/* Service Items List */
+.service-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px 16px 30px;
+    border-top: 1px solid #efefef;
+    gap: 15px;
+}
+
+.service-list-item span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 0.5px;
+    flex: 1;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+/* Book Button */
+.book-btn {
+    background-color: #2E233A;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.book-btn:hover {
+    background-color: #1a1a1a;
+}
+
+/* Mobile Responsive Modal */
+@media (max-width: 768px) {
+    .service-modal {
+        width: 100%;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 1rem;
+    }
+
+    .service-accordion-header {
+        padding: 18px 20px;
+    }
+
+    .service-accordion-header h3 {
+        font-size: 0.9rem;
+    }
+
+    .service-list-item {
+        padding: 14px 20px 14px 35px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .service-list-item span {
+        font-size: 0.8rem;
+        flex: 1;
+    }
 }
 
 /* Services Section */
 .services-container {
     width: 70%;
     margin: auto;
-  }
-  .services-container h1 {
+}
+
+.services-container h1 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 2.5rem;
     font-family: 'castoro Titling';
     color: var(--primary-color);
     font-style: italic;
-  }
-  
-  .services-container a{
+}
+
+.services-container a {
     text-decoration: none;
     color: inherit;
-  }
-  
-  .service-item {
+}
+
+.service-item {
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
-  }
-  
-  .service-header {
+}
+
+.service-header {
     cursor: pointer;
     font-size: 1.3em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .service-header {
-    outline: none; /* 포커스 시 윤곽선 제거 */
 }
+
+.service-header {
+    outline: none;
+    /* 포커스 시 윤곽선 제거 */
+}
+
 /* .service-content {
       
 } */
 .service-content {
     display: none;
     overflow: hidden;
-padding: 10px 0; 
+    padding: 10px 0;
     transition: all 0.3s ease-out;
 }
 
@@ -488,40 +861,44 @@ padding: 10px 0;
 }
 
 .service-row {
-      display: flex;
-      align-items: flex-start;
-      padding: 13px 0;
-      border-bottom: 1px solid #eee;
-      gap: 15px;
+    display: flex;
+    align-items: flex-start;
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+    gap: 15px;
 }
 
 .service-row p {
-      flex: 1;
-      margin: 0;
-      line-height: 1.4;
-      word-break: break-word;
+    flex: 1;
+    margin: 0;
+    line-height: 1.4;
+    word-break: break-word;
 }
 
 @media (max-width: 768px) {
     .service-content.active {
         margin-bottom: 15px;
     }
-    
+
     .service-row {
         word-break: break-word;
         gap: 10px;
         margin: 0px 7px 7px;
     }
+
     .book-button {
         padding: 5px 8px 4px;
         font-size: 0.75rem;
         border-radius: 14px;
         width: 50px;
     }
+
     .service-row p {
         flex: 1;
-        word-break: break-word; /* Add word break for long text */
-        hyphens: auto; /* Enable hyphenation */
+        word-break: break-word;
+        /* Add word break for long text */
+        hyphens: auto;
+        /* Enable hyphenation */
         margin: 0;
         line-height: 1.4;
     }
@@ -532,11 +909,11 @@ padding: 10px 0;
         padding: 8px 10px;
         margin: 3px 0;
     }
-    
+
     .sub-category-content {
         padding-left: 10px;
     }
-    
+
     .sub-toggle-icon {
         font-size: 1.1em;
     }
@@ -549,17 +926,20 @@ padding: 10px 0;
         flex-wrap: nowrap;
         gap: 8px;
     }
-    
+
     .service-row p {
         flex: 1;
-        word-break: break-word; /* Add word break for long text */
-        hyphens: auto; /* Enable hyphenation */
+        word-break: break-word;
+        /* Add word break for long text */
+        hyphens: auto;
+        /* Enable hyphenation */
         margin: 0;
         line-height: 1.3;
     }
-    
+
     .service-row .book-button {
-        margin-left: auto; /* Push button to the right */
+        margin-left: auto;
+        /* Push button to the right */
         padding: 6px 6px 4px;
         font-size: 0.65rem;
         border-radius: 13px;
@@ -589,7 +969,7 @@ padding: 10px 0;
     /* background-color: #c19b2e; */
     /* transform: translateY(-2px); */
     color: #B8A7D3 !important;
-    
+
     /* transform: scale(1.05); */
     border: 2px solid #B8A7D3;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -598,11 +978,14 @@ padding: 10px 0;
 .service-row1 {
     border-bottom: 1px solid #eee;
 }
-.service-row1 > div {
+
+.service-row1>div {
     border-bottom: none;
 }
-.service-row1 > p {
-    margin-top: 10px !important; /* Adjust the value as needed */
+
+.service-row1>p {
+    margin-top: 10px !important;
+    /* Adjust the value as needed */
 }
 
 
@@ -629,77 +1012,93 @@ padding: 10px 0;
 .stylist-card {
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
-    background-color: var(--light-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    box-shadow: none;
     transition: transform 0.3s ease;
     width: 100%;
-    height: 418.63px !important;
+    height: auto !important;
     display: flex;
     flex-direction: column;
 }
 
 .stylist-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: none;
 }
 
-.slider-nav, .slider-dots {
+.slider-nav,
+.slider-dots {
     display: none;
 }
 
 .stylist-image {
     width: 100%;
-    height: 280px;
+    aspect-ratio: 3/4;
+    height: auto;
     overflow: hidden;
     flex-shrink: 0;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
 }
 
 .stylist-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s ease;
 }
 
 .stylist-card:hover .stylist-image img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .stylist-info {
     text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    flex-grow: 1;
+    background: transparent;
+    color: #1a1a1a;
+    flex-grow: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* padding: 0.4rem 0.3rem 0.2rem 0.3rem; */
+    padding: 0;
 }
 
 .stylist-info h3 {
-    font-family: 'Castoro Titling';
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-top: 0.5rem;
-    margin-bottom: 0.3rem;
-    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .stylist-info p {
-    color: var(--secondary-color);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 0.3rem;
+    color: #666;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
-.stylist-info .specialty,
-.stylist-info .languages {
+.stylist-info .specialty {
     display: block;
     font-size: 0.8rem;
-    color: #ccc;
-    margin-top: 0.2rem;
-    margin-bottom: 0;
+    color: #333;
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.stylist-info .languages {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
 }
 
 @media (max-width: 1200px) {
@@ -717,63 +1116,63 @@ padding: 10px 0;
 @media (max-width: 600px) {
     .stylist-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        transform: none !important; /* Prevent sliding transformation */
-        transition: none !important; /* Disable transition */
-        display: grid !important; /* Ensure grid display */
-        width: 100% !important; /* Full width */
+        gap: 15px;
+        transform: none !important;
+        transition: none !important;
+        display: grid !important;
+        width: 100% !important;
+        padding: 0 15px;
     }
-    
-    .slider-nav, 
+
+    .slider-nav,
     .slider-dots {
         display: none !important;
     }
-    
+
     .stylist-slider-container {
         overflow: visible !important;
         padding: 0 !important;
     }
-    
+
     .stylist-card {
-        height: 300px;
-        margin-bottom: 10px;
+        height: auto !important;
+        margin-bottom: 20px;
     }
-    
+
     .stylist-image {
-        height: 220px;
+        height: auto;
+        aspect-ratio: 3/4;
+        margin-bottom: 15px;
     }
-    
+
     .stylist-info {
-        /* padding: 8px 5px 6px; */
-        padding: 20px 20px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 75px;
+        padding: 0;
+        height: auto;
+        display: block;
     }
-    
+
     .stylist-info h3 {
         font-size: 0.9rem;
         margin-top: 3px;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info p {
         font-size: 0.75rem;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info .specialty,
     .stylist-info .languages {
         font-size: 0.7rem;
         line-height: 1.1;
         margin-bottom: 2px;
     }
-    
+
     .stylist-info .languages {
         margin-bottom: 0;
     }
-    
+
     .members-section {
         padding: 2rem 1rem;
     }
@@ -804,7 +1203,7 @@ padding: 10px 0;
 .members-header h2 {
     color: var(--primary-color);
     font-size: 2.5rem;
-    
+
     margin-top: 2.5rem;
     position: relative;
     font-style: italic;
@@ -814,7 +1213,7 @@ padding: 10px 0;
     text-align: center;
 }
 
-.members-content > p {
+.members-content>p {
     max-width: 800px;
     margin: 0 auto;
     color: var(--text-color);
@@ -826,23 +1225,23 @@ padding: 10px 0;
     .members-section {
         padding: 2rem 1rem;
     }
-    
+
     .members-header h2 {
         font-size: 2rem;
     }
-    
-    .members-content > p {
+
+    .members-content>p {
         font-size: 1rem;
         padding: 0 1rem;
     }
 }
 
 /* Gallery Section */
-    
+
 .gallery {
     padding: 40px 10px;
-    background-color: #f0f0f5; 
-    margin-bottom: 50px; 
+    background-color: #f0f0f5;
+    margin-bottom: 50px;
 }
 
 .gallery-header {
@@ -881,6 +1280,7 @@ padding: 10px 0;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 .gallery-item {
     position: relative;
     overflow: hidden;
@@ -956,44 +1356,47 @@ footer {
 }
 
 .services-category {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .service-column {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin: 15px;
-  width: 400px; /* 일정한 크기 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 15px;
+    width: 400px;
+    /* 일정한 크기 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-column:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-h2, h3, h4 {
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: normal;
-  font-family: 'Castoro Titling';
+h2,
+h3,
+h4 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: normal;
+    font-family: 'Castoro Titling';
 }
 
 ul {
-  list-style: none;
-  padding: 0;
-  padding: 0;
+    list-style: none;
+    padding: 0;
+    padding: 0;
 }
 
 li {
-  margin: 8px 0;
-  color: #666;
-  font-size: 0.95rem;
+    margin: 8px 0;
+    color: #666;
+    font-size: 0.95rem;
 }
 
 
@@ -1005,79 +1408,93 @@ li {
     padding: 2rem;
     background-color: var(--light-color);
 }
+
 .direction-section .book-visit,
 .direction-section .map-container {
-    flex: 1; /* Ensure both take equal space */
-    margin: 0 1rem; /* Add equal margin on both sides */
+    flex: 1;
+    /* Ensure both take equal space */
+    margin: 0 1rem;
+    /* Add equal margin on both sides */
 }
 
 
 .direction-section .map-container {
-   width: 70%;
-   height: 400px;
-   /* margin: 0 auto; */
+    width: 70%;
+    height: 400px;
+    /* margin: 0 auto; */
 }
 
 .book-visit {
- background-color: #ffffff;
- border-radius: 15px;
- box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
- transition: transform 0.3s ease, box-shadow 0.3s ease;
- padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 40px;
 
- width:  30%;
- height: 300px;
- border: 0;
- object-fit: cover;
+    width: 30%;
+    height: 300px;
+    border: 0;
+    object-fit: cover;
 
 }
 
-.address-box, .contact-box {
- margin-top: 15px;
- font-size: 1rem;
- color: #333;
+.address-box,
+.contact-box {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #333;
 }
 
 .hours-list {
- border-bottom: 1px solid #eee;
- padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
 }
+
 .hour-item {
- display: flex;
- justify-content: space-between;
- padding: 5px 0;
- font-size: 1rem;
- gap: 10px; /* 간격을 늘리기 위해 추가 */
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 1rem;
+    gap: 10px;
+    /* 간격을 늘리기 위해 추가 */
 }
 
 .direction-btn:hover {
- background-color: #B8A7D3;
+    background-color: #B8A7D3;
 }
- 
+
 @media (max-width: 768px) {
-   .direction-section {
-       flex-direction: column; /* Stack elements vertically */
-       align-items: center; /* Center align items */
-   }
+    .direction-section {
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: center;
+        /* Center align items */
+    }
 
-       
-   .direction-section .map-container {
-       width: 100%; /* Full width on mobile */
-       height: auto; /* Maintain aspect ratio */
-       display: flex;
-       justify-content: center;
-   }
 
-   .direction-section .book-visit,
-   .direction-section .map-container {
-       width: 100%; /* Full width on mobile */
-       margin-bottom: 2rem; /* Add space between elements */
-   }
+    .direction-section .map-container {
+        width: 100%;
+        /* Full width on mobile */
+        height: auto;
+        /* Maintain aspect ratio */
+        display: flex;
+        justify-content: center;
+    }
 
-   .direction-section iframe {
-       width: 100%; /* Full width for the map */
-       height: 300px; /* Adjust height as needed */
-   }
+    .direction-section .book-visit,
+    .direction-section .map-container {
+        width: 100%;
+        /* Full width on mobile */
+        margin-bottom: 2rem;
+        /* Add space between elements */
+    }
+
+    .direction-section iframe {
+        width: 100%;
+        /* Full width for the map */
+        height: 300px;
+        /* Adjust height as needed */
+    }
 }
 
 .policy-container {
@@ -1167,7 +1584,7 @@ li {
     border-radius: 0 0 8px 8px;
 }
 
-.policy-section p + p {
+.policy-section p+p {
     border-top: 1px solid #f5f5f5;
     padding-top: 15px;
 }
@@ -1178,21 +1595,21 @@ li {
         margin: 25px auto;
         padding: 15px 10px;
     }
-    
+
     .policy-title {
         font-size: 1.5rem;
         margin-bottom: 25px;
     }
-    
+
     .policy-section {
         width: 95%;
     }
-    
+
     .policy-section h4 {
         font-size: 1rem;
         padding: 10px 12px;
     }
-    
+
     .policy-section p {
         padding: 12px;
         font-size: 0.9rem;
@@ -1273,23 +1690,33 @@ li {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    gap: 20px; /* Add spacing between icons */
-    flex-direction: row; /* Ensure horizontal layout */
+    gap: 20px;
+    /* Add spacing between icons */
+    flex-direction: row;
+    /* Ensure horizontal layout */
 }
 
-.instagram-icon, .Facebook-icon, .Youtube-icon, .LinkedIn-icon {
+.instagram-icon,
+.Facebook-icon,
+.Youtube-icon,
+.LinkedIn-icon {
     width: 50px;
     height: 50px;
     transition: all 0.3s ease;
 }
 
-.instagram-icon:hover, .Facebook-icon:hover, .Youtube-icon:hover, .LinkedIn-icon:hover {
+.instagram-icon:hover,
+.Facebook-icon:hover,
+.Youtube-icon:hover,
+.LinkedIn-icon:hover {
     transform: scale(1.1);
     opacity: 0.8;
 }
 
 /* Set specific size for YouTube, LinkedIn, and Facebook icons */
-.Youtube-icon, .LinkedIn-icon, .Facebook-icon {
+.Youtube-icon,
+.LinkedIn-icon,
+.Facebook-icon {
     width: 28px;
     height: 28px;
 }
@@ -1310,30 +1737,30 @@ li {
         margin-bottom: 15px;
         border-radius: 0;
     }
-    
+
     .business-content {
         grid-template-columns: 1fr;
         gap: 40px;
         transform: translateX(0);
     }
-    
+
     .business-hours {
         padding-left: 10px;
         text-align: left;
         margin-left: 0;
     }
-    
+
     .business-map {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
+
     .business-map iframe {
         width: 90%;
         height: 250px;
     }
-    
+
     .business-social {
         text-align: center;
     }
@@ -1383,7 +1810,9 @@ li {
     padding: 1rem;
 }
 
-.about-text p, .about-services p, .about-booking p {
+.about-text p,
+.about-services p,
+.about-booking p {
     margin-bottom: 1rem;
     font-family: 'Castoro Titling';
     line-height: 1.6;
@@ -1439,10 +1868,12 @@ li {
     justify-content: center;
     /* align-items: center; */
 }
+
 .about-booking p {
     font-family: 'Castoro Titling';
     text-align: left;
 }
+
 .booking-cta {
     font-weight: bold;
     /* margin: 1.5rem 0; */
@@ -1452,7 +1883,7 @@ li {
 .about-footer {
     margin-top: 3rem;
     padding: 2rem 0;
-    text-align: center; 
+    text-align: center;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -1498,11 +1929,11 @@ li {
     .about {
         padding: 4rem 1rem;
     }
-    
+
     .about-header h2 {
         font-size: 2rem;
     }
-    
+
     .about-content p {
         font-size: 1rem;
     }
@@ -1512,25 +1943,30 @@ li {
         grid-template-columns: 1fr;
         gap: 0;
         position: relative;
-        margin-bottom: 4rem; /* Add space between grid sections */
+        margin-bottom: 4rem;
+        /* Add space between grid sections */
     }
 
     .about-image {
         position: relative;
         z-index: 1;
         margin: 0 auto;
-        max-width: 100%; /* 이미지 최대 너비 100%로 확장 */
+        max-width: 100%;
+        /* 이미지 최대 너비 100%로 확장 */
         width: 100%;
     }
-    
+
     .about-image img {
-        width: 110%; /* 이미지 너비 110%로 확장 */
+        width: 110%;
+        /* 이미지 너비 110%로 확장 */
         height: auto;
         object-fit: cover;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        max-width: none; /* max-width 제한 해제 */
-        margin-left: -5%; /* 좌우 중앙 정렬을 위한 마진 조정 */
+        max-width: none;
+        /* max-width 제한 해제 */
+        margin-left: -5%;
+        /* 좌우 중앙 정렬을 위한 마진 조정 */
     }
 
     .about-grid:nth-child(1) .about-text {
@@ -1560,13 +1996,13 @@ li {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         text-align: left;
     }
-    
+
     .about-grid:nth-child(2) .services-list {
         text-align: left;
         padding-left: 0;
         margin-bottom: 0;
     }
-    
+
     .about-grid:nth-child(2) .services-list li {
         margin-bottom: 0.25rem;
         font-size: 0.9rem;
@@ -1585,19 +2021,20 @@ li {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         text-align: left;
     }
-    
+
     .about-grid:nth-child(3) .about-booking p {
         margin-bottom: 0.5rem;
         font-size: 0.9rem;
     }
-    
+
     /* General styling for paragraphs */
-    .about-text p, .about-services p {
+    .about-text p,
+    .about-services p {
         text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         font-weight: 500;
         margin-bottom: 0.5rem;
     }
-    
+
     /* Add specific margin for about-booking paragraphs */
     .about-booking p {
         margin-top: 0.3rem;
@@ -1607,22 +2044,26 @@ li {
 }
 
 @media (max-width: 480px) {
+
     .about-grid:nth-child(1) .about-text,
     .about-grid:nth-child(2) .about-services {
         padding: 1.2rem;
         width: 85%;
     }
-    
+
     .about-grid:nth-child(3) .about-booking {
-        padding: 0.8rem 1.2rem; /* Further reduced for mobile */
+        padding: 0.8rem 1.2rem;
+        /* Further reduced for mobile */
         width: 85%;
         text-align: left;
     }
-    
-    .about-text p, .about-services p, .about-booking p {
+
+    .about-text p,
+    .about-services p,
+    .about-booking p {
         font-size: 0.9rem;
     }
-    
+
     .services-list li {
         font-size: 0.9rem;
     }
@@ -1634,8 +2075,13 @@ li {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    
+
     .members-section {
         padding: 2rem 1rem;
     }
+}
+
+/* Hidden Sections as per user request */
+#our-services {
+    display: none !important;
 }
