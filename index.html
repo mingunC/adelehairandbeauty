@@ -24,7 +24,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Leaflet Javascript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <body>
   <!-- Header - Luxury Style -->
@@ -40,12 +45,99 @@
       <span></span>
     </button>
     <ul class="nav-list">
+      <!-- Mobile Menu Header (Logo + Close) -->
+      <li class="mobile-menu-header">
+        <div class="menu-logo">
+          <img src="optimized-images/logo11.jpg" alt="Adele Hair & Beauty">
+        </div>
+        <button class="menu-close-btn" onclick="toggleMobileNav()">
+          <i class="fas fa-times"></i>
+        </button>
+      </li>
+
       <li class="list-item"><a href="#home">HOME</a></li>
+      <li class="list-item">
+        <a href="#service-categories" onclick="handleServiceClick(event)">
+          SERVICES <i class="fas fa-chevron-right mobile-only-icon"></i>
+        </a>
+      </li>
       <li class="list-item"><a href="#business-info">LOCATIONS</a></li>
       <li class="list-item"><a href="#team">TEAM</a></li>
       <li class="list-item"><a href="https://www.instagram.com/adelehair_official/" class="instagram-link"
           target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
     </ul>
+
+    <!-- Mobile Service Drill-Down Menu -->
+    <div class="mobile-service-menu" id="mobileServiceMenu">
+      <div class="mobile-service-header">
+        <button class="back-btn" onclick="closeMobileServiceMenu()">
+          <i class="fas fa-arrow-left"></i> BACK
+        </button>
+        <span class="menu-title">SERVICES</span>
+      </div>
+      <div class="mobile-service-list">
+        <div class="mobile-service-item" onclick="openServiceCategory('PROMOTION'); toggleMobileNav()">
+          <img src="optimized-images/collection/1a.webp" alt="Promotion">
+          <span>Promotion</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Women\'s Hair'); toggleMobileNav()">
+          <img src="optimized-images/collection/2a.webp" alt="Women's Hair">
+          <span>Women's Hair</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Men\'s Hair'); toggleMobileNav()">
+          <img src="optimized-images/collection/3a.webp" alt="Men's Hair">
+          <span>Men's Hair</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Kids Hair'); toggleMobileNav()">
+          <img src="optimized-images/collection/4a.webp" alt="Kids Hair">
+          <span>Kids Hair</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Makeup'); toggleMobileNav()">
+          <img src="optimized-images/collection/5a.webp" alt="Makeup">
+          <span>Makeup</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('EyeBrow'); toggleMobileNav()">
+          <img src="optimized-images/collection/6a.webp" alt="Eyebrow">
+          <span>Eyebrow</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('EYELINER'); toggleMobileNav()">
+          <img src="optimized-images/collection/6b.webp" alt="Eyeliner">
+          <span>Eyeliner</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Hair Line'); toggleMobileNav()">
+          <img src="optimized-images/collection/7a.webp" alt="Hair Line">
+          <span>Hair Line</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('LIPS'); toggleMobileNav()">
+          <img src="optimized-images/collection/8a.webp" alt="Lips">
+          <span>Lips</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Lashes'); toggleMobileNav()">
+          <img src="optimized-images/collection/5b.webp" alt="Lashes">
+          <span>Lashes</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Aesthetic'); toggleMobileNav()">
+          <img src="optimized-images/collection/9a.webp" alt="Aesthetic">
+          <span>Aesthetic</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="mobile-service-item" onclick="openServiceCategory('Wedding'); toggleMobileNav()">
+          <img src="optimized-images/collection/4b.webp" alt="Wedding">
+          <span>Wedding</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
   </nav>
   <!-- </header> -->
   <main>
@@ -799,14 +891,20 @@
       <div class="members-section">
         <div class="members-header">
           <span class="subtitle">Our Team</span>
-          <h2>Meet Our Experts</h2>
         </div>
         <div class="members-content">
-          <p>Meet our talented team of beauty professionals</p>
-          <p>dedicated to making you look and feel your best.</p>
+          <!-- Filter Chips -->
+          <div class="team-filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="hair">Hair Stylist</button>
+            <button class="filter-btn" data-filter="color">Colorist</button>
+            <button class="filter-btn" data-filter="barber">Barber</button>
+            <button class="filter-btn" data-filter="makeup-lash">Lash/Makeup</button>
+          </div>
+
           <div class="stylist-slider-container">
             <div class="stylist-grid">
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair">
                 <div class="stylist-image">
                   <img src="optimized-images/team/sunny.webp" alt="Sunny - Hair Stylist" loading="lazy">
                 </div>
@@ -817,7 +915,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair">
                 <div class="stylist-image">
                   <img src="optimized-images/team/sarahR.webp" alt="SarahR - Senior Hair Stylist" loading="lazy">
                 </div>
@@ -828,7 +926,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="color">
                 <div class="stylist-image">
                   <img src="optimized-images/team/mary.webp" alt="Mary - Senior Hair Stylist" loading="lazy">
                 </div>
@@ -839,7 +937,7 @@
                   <span class="languages">Speaks: English, Laos</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair">
                 <div class="stylist-image">
                   <img src="optimized-images/team/suzi.webp" alt="Suzi - Hair Stylist" loading="lazy">
                 </div>
@@ -850,7 +948,7 @@
                   <span class="languages">Speaks: Basic English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair">
                 <div class="stylist-image">
                   <img src="optimized-images/team/lucy.webp" alt="Lucy - Hairstylist" loading="lazy">
                 </div>
@@ -861,7 +959,7 @@
                   <span class="languages">Speaks: Basic English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair">
                 <div class="stylist-image">
                   <img src="optimized-images/team/nina.webp" alt="Nina - Hairstylist" loading="lazy">
                 </div>
@@ -872,7 +970,7 @@
                   <span class="languages">Speaks: Basic English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="color">
                 <div class="stylist-image">
                   <img src="optimized-images/team/jackie.webp" alt="Jackie - Senior Colorist" loading="lazy">
                 </div>
@@ -883,7 +981,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="hair color">
                 <div class="stylist-image">
                   <img src="optimized-images/team/daniel.webp" alt="Daniel - Hair Stylist" loading="lazy">
                 </div>
@@ -894,7 +992,7 @@
                   <span class="languages">Speaks: English,Spanish,Russian, Basic Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="barber">
                 <div class="stylist-image">
                   <img src="optimized-images/team/Jeffrey.webp" alt="Jeffrey - Barber" loading="lazy">
                 </div>
@@ -905,7 +1003,7 @@
                   <span class="languages">Speaks: English</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="makeup-lash">
                 <div class="stylist-image">
                   <img src="optimized-images/team/gabie.webp" alt="Gabie - Eyebrow & Lash Makeup Artist" loading="lazy">
                 </div>
@@ -916,7 +1014,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="makeup-lash">
                 <div class="stylist-image">
                   <img src="optimized-images/team/ella.webp" alt="ella - Professional Make-Up Specialist"
                     loading="lazy">
@@ -928,7 +1026,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="makeup-lash">
                 <div class="stylist-image">
                   <img src="optimized-images/team/saraL.webp" alt="SarahL - Lash Expert" loading="lazy">
                 </div>
@@ -939,7 +1037,7 @@
                   <span class="languages">Speaks: English, Korean</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="makeup-lash">
                 <div class="stylist-image">
                   <img src="optimized-images/team/lysandra.webp" alt="Lysandra - Beauty Expert" loading="lazy">
                 </div>
@@ -1234,57 +1332,99 @@
     </section>
 
     <!-- Business Info Section -->
+    <!-- Business Info Section -->
     <section id="business-info">
-      <div class="business-container">
-        <h1>BUSINESS INFO</h1>
+      <div class="business-content">
+        <div class="section-header">
+          <h2>Locate a Store</h2>
+        </div>
 
-        <div class="business-content">
-          <div class="business-hours">
-            <h2>BUSINESS HOURS</h2>
-            <div class="hours-row">
-              <span>Weekdays</span>
-              <span>10 a.m. - 7 p.m</span>
-            </div>
-            <div class="hours-row">
-              <span>Saturday</span>
-              <span>10 a.m. - 6 p.m</span>
-            </div>
-            <div class="hours-row">
-              <span>Sunday</span>
-              <span>11 a.m. - 6 p.m</span>
-            </div>
+        <div class="direction-section">
+          <!-- Map Column (Right -> Left) -->
+          <div class="map-column map-container">
+            <div class="business-map">
+              <div id="map"></div>
+              <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  // Initialize Map centered between the two locations
+                  const map = L.map('map', {
+                    scrollWheelZoom: false // Disable scroll zoom for better UX
+                  }).setView([43.76, -79.41], 12);
 
-            <h2>FIND US</h2>
-            <p>6285 Yonge St</p>
-            <p>North York, ON</p>
-            <p>M2M 3X6</p>
+                  // Add CartoDB Positron Tiles (Luxury, Clean Look)
+                  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 20
+                  }).addTo(map);
 
-            <h2>CONTACT US</h2>
-            <p>+1 416-222-4100</p>
-            <p>adelehairtoronto@gmail.com</p>
+                  // Custom Icon Definition
+                  const luxuryIcon = L.icon({
+                    iconUrl: 'optimized-images/logo1.png', // Using the logo found earlier
+                    iconSize: [45, 45], // Adjusted size
+                    iconAnchor: [22, 22], // Center anchor
+                    popupAnchor: [0, -25],
+                    className: 'luxury-marker' // For CSS styling (circle shape, shadow)
+                  });
+
+                  // Location 1: North York
+                  const loc1 = L.marker([43.795299, -79.421578], { icon: luxuryIcon }).addTo(map);
+                  loc1.bindPopup('<b>Adele Hair & Beauty</b><br>6285 Yonge St');
+
+                  // Location 2: Toronto (Approx 3143 Yonge St)
+                  // Coordinates for 3143 Yonge St: 43.7275, -79.4036 (approx)
+                  const loc2 = L.marker([43.7275, -79.4036], { icon: luxuryIcon }).addTo(map);
+                  loc2.bindPopup('<b>Adele Hair & Beauty Branch</b><br>3143 Yonge St');
+                });
+              </script>
+            </div>
           </div>
 
-          <div class="business-map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.0246875071485!2d-79.42157853532223!3d43.7952989791177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2dda458892c7%3A0x4a3bf774833ec0f0!2sAdele%20Hair%20and%20Beauty!5e0!3m2!1sen!2sca!4v1709621841121!5m2!1sen!2sca"
-              style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-            <div class="business-social">
-              <a href="https://www.youtube.com/@AdeleHairandBeauty" target="_blank">
-                <img src="optimized-images/social/icons8-youtube.svg" alt="Youtube" class="Youtube-icon">
-              </a>
-              <a href="https://ca.linkedin.com/company/adelehairandbeauty" target="_blank">
-                <img src="optimized-images/social/icons8-linkedin.svg" alt="LinkedIn" class="LinkedIn-icon">
-              </a>
-              <a href="https://www.facebook.com/adelehairandbeauty/" target="_blank">
-                <img src="optimized-images/social/icons8-facebook.svg" alt="Facebook" class="Facebook-icon">
-              </a>
-              <a href="https://www.instagram.com/adelehair_official/" target="_blank">
-                <img src="optimized-images/social/icons8-instagram.svg" alt="Instagram" class="Instagram-icon">
-              </a>
-              <a href="https://maps.app.goo.gl/5Q33FbUgFeLQJnEa7" target="_blank">
-                <img src="optimized-images/social/icons8-google-26.svg" alt="Google Plus" class="Google-icon">
-              </a>
+          <!-- Info Column (Left -> Right) -->
+          <div class="info-column book-visit">
+            <div class="store-list">
+              <div class="store-item">
+                <h3>Adele Hair & Beauty</h3>
+                <p class="store-address">6285 Yonge St<br>North York, ON M2M 3X6</p>
+                <p class="store-phone">+1 416-222-4100</p>
+
+                <div class="store-hours-list">
+                  <div class="hours-row">
+                    <span>Weekdays</span>
+                    <span>10 a.m. - 7 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Saturday</span>
+                    <span>10 a.m. - 6 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Sunday</span>
+                    <span>11 a.m. - 6 p.m</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="store-item">
+                <h3>Adele Hair & Beauty Branch</h3>
+                <p class="store-address">3143 Yonge St<br>Toronto, ON M4N 2K9</p>
+                <p class="store-phone">+1 416-222-4100</p>
+
+                <div class="store-hours-list">
+                  <div class="hours-row">
+                    <span>Weekdays</span>
+                    <span>10 a.m. - 7 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Saturday</span>
+                    <span>10 a.m. - 6 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Sunday</span>
+                    <span>11 a.m. - 6 p.m</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

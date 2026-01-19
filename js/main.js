@@ -3,27 +3,79 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const navList = document.querySelector('nav ul');
 
+    // Make toggleMobileNav globally available
+    window.toggleMobileNav = function () {
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const navList = document.querySelector('nav ul');
+        const mobileServiceMenu = document.getElementById('mobileServiceMenu');
+
+        if (mobileNavToggle && navList) {
+            mobileNavToggle.classList.remove('active');
+            navList.classList.remove('active');
+        }
+
+        // Also close service menu if open
+        if (mobileServiceMenu) {
+            mobileServiceMenu.classList.remove('active');
+        }
+    };
+
     if (mobileNavToggle && navList) {
         mobileNavToggle.addEventListener('click', () => {
             mobileNavToggle.classList.toggle('active');
             navList.classList.toggle('active');
+
+            // Close service menu when toggling main nav
+            const mobileServiceMenu = document.getElementById('mobileServiceMenu');
+            if (mobileServiceMenu && !navList.classList.contains('active')) {
+                mobileServiceMenu.classList.remove('active');
+            }
         });
 
         document.addEventListener('click', (e) => {
             if (!e.target.closest('nav') && navList.classList.contains('active')) {
                 mobileNavToggle.classList.remove('active');
                 navList.classList.remove('active');
+
+                // Close service menu clicking outside
+                const mobileServiceMenu = document.getElementById('mobileServiceMenu');
+                if (mobileServiceMenu) {
+                    mobileServiceMenu.classList.remove('active');
+                }
             }
         });
 
         const navLinks = navList.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                // Don't close if clicking Services link (handled separately)
+                if (link.innerText === 'SERVICES') return;
+
                 mobileNavToggle.classList.remove('active');
                 navList.classList.remove('active');
             });
         });
     }
+
+    // ========== Mobile Service Menu Logic ==========
+    window.handleServiceClick = function (event) {
+        // Check if mobile (width < 769px matches min-width in CSS)
+        if (window.innerWidth < 769) {
+            event.preventDefault();
+            const menu = document.getElementById('mobileServiceMenu');
+            if (menu) {
+                menu.classList.add('active');
+            }
+        }
+        // On desktop, allow default link behavior (scroll to anchor)
+    };
+
+    window.closeMobileServiceMenu = function () {
+        const menu = document.getElementById('mobileServiceMenu');
+        if (menu) {
+            menu.classList.remove('active');
+        }
+    };
 
     // ========== Scroll event (navbar, booking-link) ==========
     window.addEventListener('scroll', () => {
@@ -416,4 +468,37 @@ document.addEventListener('DOMContentLoaded', () => {
             closeServiceModal();
         }
     });
+
+    // ========== Team Filter System ==========
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const stylistCards = document.querySelectorAll('.stylist-card');
+
+    if (filterBtns.length > 0 && stylistCards.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                stylistCards.forEach(card => {
+                    // Reset animation
+                    card.classList.remove('fade-in');
+
+                    const categories = card.getAttribute('data-category');
+
+                    if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
+                        card.classList.remove('hidden');
+                        // Trigger reflow to restart animation
+                        void card.offsetWidth;
+                        card.classList.add('fade-in');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    }
 });
