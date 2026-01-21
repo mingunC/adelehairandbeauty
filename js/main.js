@@ -502,26 +502,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // ========== Footer Links Logic ==========
-    const businessPoliciesLink = document.getElementById('openBusinessPolicies');
+    // ========== Footer Links Logic ==========
+    const businessPoliciesButtons = document.querySelectorAll('.trigger-business-policies, #openBusinessPolicies');
     const aboutUsLink = document.getElementById('openAboutUs');
     const aboutSection = document.getElementById('about');
+    const businessPoliciesContent = document.getElementById('business-policies-content');
 
-    function showAboutSection(e) {
+    // Initially hide About Us (Business Policies remains visible)
+    if (aboutSection) aboutSection.style.display = 'none';
+    // if (businessPoliciesContent) businessPoliciesContent.style.display = 'none'; 
+
+    function scrollToBusinessPolicies(e) {
         e.preventDefault();
-        if (aboutSection) {
-            // Ensure section is visible if it was hidden
-            aboutSection.style.display = 'block';
 
-            // Scroll to it smoothly
-            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        // Close mobile menu
+        if (window.innerWidth < 769) {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navList = document.querySelector('nav ul');
+            if (mobileNavToggle && navList) {
+                mobileNavToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        }
+
+        if (businessPoliciesContent) {
+            // Ensure it's visible
+            businessPoliciesContent.style.display = 'block';
+            setTimeout(() => {
+                businessPoliciesContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
         }
     }
 
-    if (businessPoliciesLink) {
-        businessPoliciesLink.addEventListener('click', showAboutSection);
+    function toggleAboutSection(e) {
+        e.preventDefault();
+
+        // Close mobile menu
+        if (window.innerWidth < 769) {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navList = document.querySelector('nav ul');
+            if (mobileNavToggle && navList) {
+                mobileNavToggle.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        }
+
+        if (aboutSection) {
+            if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
+                aboutSection.style.display = 'block';
+                setTimeout(() => {
+                    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                aboutSection.style.display = 'none';
+            }
+        }
+    }
+
+    if (businessPoliciesButtons.length > 0) {
+        businessPoliciesButtons.forEach(btn => {
+            btn.addEventListener('click', scrollToBusinessPolicies);
+        });
     }
 
     if (aboutUsLink) {
-        aboutUsLink.addEventListener('click', showAboutSection);
+        aboutUsLink.addEventListener('click', toggleAboutSection);
     }
 });
