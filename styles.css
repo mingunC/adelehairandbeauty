@@ -732,7 +732,7 @@ main {
 
 @media (max-width: 768px) {
     .hero {
-        height: 90vh;
+        height: 60vh;
         align-items: flex-end;
         padding-bottom: 12vh;
     }
@@ -838,6 +838,150 @@ main {
 
     .category-item span {
         font-size: 1.2rem;
+    }
+}
+
+/* ======================================
+   New Book By Category Design - Luxury
+   ====================================== */
+
+.selection-view {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.selection-view.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.selection-view.active {
+    display: block;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Cards Container */
+.main-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.main-card {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    /* Landscape rectangular shape */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.main-card .card-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.main-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.main-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.main-card .card-title {
+    font-family: 'Castoro Titling', serif;
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+/* Hover Effects */
+.main-card:hover img {
+    transform: scale(1.05);
+}
+
+.main-card:hover .overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.main-card:hover .card-title {
+    transform: scale(1.05);
+    letter-spacing: 6px;
+}
+
+/* Back Button */
+.back-to-main-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-main-btn:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+/* Responsive Adjustments for New Design */
+@media (max-width: 768px) {
+    .main-card-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-card {
+        aspect-ratio: 16/9;
+        /* More horizontal on mobile */
+    }
+
+    .main-card .card-title {
+        font-size: 1.5rem;
     }
 }
 
@@ -2768,6 +2912,8 @@ footer {
 
 /* Minimal Luxury About Section */
 .about-minimal {
+    display: block !important;
+    /* Force visibility - always show */
     padding: 100px 20px;
     background-color: #fff;
     text-align: center;
@@ -2974,4 +3120,99 @@ footer {
     #business-policies-content {
         padding: 40px 5%;
     }
+}
+
+/* Mobile Nested Navigation Styles */
+.mobile-view {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+.mobile-view.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.mobile-view.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mobile Main Cards (Hair/Beauty) */
+.mobile-main-card {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    /* Landscape for main cards */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-main-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mobile-main-card:hover img {
+    transform: scale(1.05);
+}
+
+.mobile-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-card-overlay span {
+    font-family: 'Castoro Titling', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile Grid for Sub-categories */
+.mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    row-gap: 25px;
+    padding: 10px 0;
+}
+
+.mobile-back-btn {
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Adjust .mobile-service-list to accommodate full width views */
+.mobile-service-list {
+    display: block;
+    /* Override grid */
+    padding: 20px 25px;
 }

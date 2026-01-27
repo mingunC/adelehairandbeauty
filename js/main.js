@@ -74,7 +74,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const menu = document.getElementById('mobileServiceMenu');
         if (menu) {
             menu.classList.remove('active');
+            // Reset to main view after delay
+            setTimeout(() => {
+                showMobileMain();
+            }, 300);
         }
+    };
+
+    // ========== Mobile Nested Navigation Logic ==========
+    window.showMobileMain = function () {
+        document.getElementById('mobile-main-view').classList.remove('hidden');
+        document.getElementById('mobile-main-view').classList.add('active');
+        document.getElementById('mobile-hair-view').classList.remove('active');
+        document.getElementById('mobile-hair-view').classList.add('hidden');
+        document.getElementById('mobile-beauty-view').classList.remove('active');
+        document.getElementById('mobile-beauty-view').classList.add('hidden');
+    };
+
+    window.showMobileHair = function () {
+        document.getElementById('mobile-main-view').classList.remove('active');
+        document.getElementById('mobile-main-view').classList.add('hidden');
+        document.getElementById('mobile-hair-view').classList.remove('hidden');
+        document.getElementById('mobile-hair-view').classList.add('active');
+    };
+
+    window.showMobileBeauty = function () {
+        document.getElementById('mobile-main-view').classList.remove('active');
+        document.getElementById('mobile-main-view').classList.add('hidden');
+        document.getElementById('mobile-beauty-view').classList.remove('hidden');
+        document.getElementById('mobile-beauty-view').classList.add('active');
     };
 
     // ========== Scroll event (navbar, booking-link) ==========
@@ -91,6 +119,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if (button) {
             button.style.backgroundColor = '#2C233A';
         }
+    });
+
+    // ========== Smooth Scroll with Offset ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+
+            // Skip empty links or special handlers
+            if (href === '#' || href === '') return;
+
+            // Special handling for Services link on mobile (let handleServiceClick work)
+            if (href === '#service-categories' && window.innerWidth < 769) {
+                return;
+            }
+
+            // For all other anchor links, or desktop Services link
+            e.preventDefault();
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                // Close mobile menu if open
+                if (mobileNavToggle && navList) {
+                    mobileNavToggle.classList.remove('active');
+                    navList.classList.remove('active');
+                }
+
+                // Calculate dynamic offset (Header height: 80px mobile, 120px desktop)
+                const headerOffset = window.innerWidth < 769 ? 80 : 120;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 });
 
@@ -504,13 +568,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========== Footer Links Logic ==========
     // ========== Footer Links Logic ==========
     const businessPoliciesButtons = document.querySelectorAll('.trigger-business-policies, #openBusinessPolicies');
-    const aboutUsLink = document.getElementById('openAboutUs');
+    const aboutUsLinks = document.querySelectorAll('.trigger-about-us, #openAboutUs');
     const aboutSection = document.getElementById('about');
     const businessPoliciesContent = document.getElementById('business-policies-content');
 
     // Initially hide About Us (Business Policies remains visible)
-    if (aboutSection) aboutSection.style.display = 'none';
-    // if (businessPoliciesContent) businessPoliciesContent.style.display = 'none'; 
+    // if (aboutSection) aboutSection.style.display = 'none'; // Removed per user request
 
     function scrollToBusinessPolicies(e) {
         e.preventDefault();
@@ -548,14 +611,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (aboutSection) {
-            if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
-                aboutSection.style.display = 'block';
-                setTimeout(() => {
-                    aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            } else {
-                aboutSection.style.display = 'none';
-            }
+            // Force visibility just in case
+            aboutSection.style.display = 'block';
+
+            // Calculate dynamic offset (Header height: 80px mobile, 120px desktop)
+            const headerOffset = window.innerWidth < 769 ? 80 : 120;
+            const elementPosition = aboutSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 
@@ -565,7 +632,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (aboutUsLink) {
-        aboutUsLink.addEventListener('click', toggleAboutSection);
+    if (aboutUsLinks.length > 0) {
+        aboutUsLinks.forEach(link => {
+            link.addEventListener('click', toggleAboutSection);
+        });
     }
 });
+
+// ========== New Category Selection Logic ==========
+
+window.showSubCategories = function (category) {
+    const mainSelection = document.getElementById('main-category-selection');
+    const hairSub = document.getElementById('hair-sub-categories');
+    const beautySub = document.getElementById('beauty-sub-categories');
+
+    // Hide Main Selection
+    mainSelection.classList.remove('active');
+    mainSelection.classList.add('hidden');
+
+    // Show appropriate sub-category
+    if (category === 'hair') {
+        hairSub.classList.remove('hidden');
+        hairSub.classList.add('active');
+        beautySub.classList.remove('active');
+        beautySub.classList.add('hidden');
+    } else if (category === 'beauty') {
+        beautySub.classList.remove('hidden');
+        beautySub.classList.add('active');
+        hairSub.classList.remove('active');
+        hairSub.classList.add('hidden');
+    }
+
+    // Scroll to top of section for better UX
+    const section = document.getElementById('service-categories');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+};
+
+window.showMainCategories = function () {
+    const mainSelection = document.getElementById('main-category-selection');
+    const hairSub = document.getElementById('hair-sub-categories');
+    const beautySub = document.getElementById('beauty-sub-categories');
+
+    // Hide Sub-Categories
+    hairSub.classList.remove('active');
+    hairSub.classList.add('hidden');
+    beautySub.classList.remove('active');
+    beautySub.classList.add('hidden');
+
+    // Show Main Selection
+    mainSelection.classList.remove('hidden');
+    mainSelection.classList.add('active');
+
+    // Scroll to top of section
+    const section = document.getElementById('service-categories');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+};
