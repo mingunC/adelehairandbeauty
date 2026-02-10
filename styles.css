@@ -200,6 +200,13 @@ main {
     display: none;
 }
 
+.navbar .instagram-group-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Gap between icons in desktop */
+}
+
 /* Hide booking link from main nav - moved to hero */
 .navbar .booking-link {
     display: none;
@@ -389,6 +396,34 @@ main {
 
     nav ul li {
         margin: 0;
+    }
+
+    /* Instagram Group Mobile Styles */
+    .navbar ul .list-item.instagram-group-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        /* Space between icons */
+        width: 100%;
+        margin-top: 10px;
+        /* Add some space from the Locations link */
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .navbar ul .list-item.instagram-group-item .instagram-link {
+        width: auto !important;
+        display: block;
+        /* Changed from flex to block/inline-block */
+        font-size: 1.8rem;
+        /* Slightly larger icons */
+    }
+
+    .navbar ul .list-item.instagram-group-item .instagram-link:hover {
+        background-color: transparent;
+        /* Remove hover background */
     }
 
     /* Hide desktop-only elements in mobile menu if they exist */
