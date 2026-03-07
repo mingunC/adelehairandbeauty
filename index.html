@@ -220,10 +220,68 @@
 
     <!-- Service Categories Grid - Louis Vuitton Style -->
     <section id="service-categories" class="service-categories">
-      <h2>BOOK BY CATEGORY</h2>
+      <h2 id="service-categories-heading">BOOK BY LOCATION</h2>
       <div id="category-selection-container" class="category-selection-container">
-        <!-- 1. Main Category Selection View -->
-        <div id="main-category-selection" class="selection-view active">
+        <!-- 0. Location Selection (North York / Downtown) -->
+        <div id="location-selection" class="selection-view active">
+          <div class="main-card-container">
+            <div class="main-card" onclick="showCategories('north-york')">
+              <div class="card-image">
+                <img src="optimized-images/location-north-york.png" alt="North York">
+              </div>
+            </div>
+            <div class="main-card coming-soon">
+              <div class="card-image">
+                <img src="optimized-images/location-downtown.png" alt="Downtown">
+                <div class="coming-soon-overlay">
+                  <span class="coming-soon-text">Coming Soon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Main Category Selection View (Hair / Beauty) -->
+        <!-- NY VERSION: main-category-selection -->
+        <div id="main-category-selection-ny" class="selection-view hidden">
+          <button class="back-to-main-btn" onclick="showLocationSelection()">
+            <i class="fas fa-arrow-left"></i> BACK TO LOCATION
+          </button>
+          <div class="category-view-header">
+            <h2 class="category-view-title">BOOK BY CATEGORY</h2>
+            <p class="category-view-address">6285 Yonge St.</p>
+          </div>
+          <div class="main-card-container">
+            <!-- Main: Hair -->
+            <div class="main-card" onclick="showSubCategories('hair')">
+              <div class="card-image">
+                <img src="optimized-images/main_hair.webp" alt="Hair Services">
+                <div class="overlay">
+                  <span class="card-title">HAIR</span>
+                </div>
+              </div>
+            </div>
+            <!-- Main: Beauty -->
+            <div class="main-card" onclick="showSubCategories('beauty')">
+              <div class="card-image">
+                <img src="optimized-images/main_beauty.webp" alt="Beauty Services">
+                <div class="overlay">
+                  <span class="card-title">BEAUTY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DT VERSION: main-category-selection -->
+        <div id="main-category-selection-dt" class="selection-view hidden">
+          <button class="back-to-main-btn" onclick="showLocationSelection()">
+            <i class="fas fa-arrow-left"></i> BACK TO LOCATION
+          </button>
+          <div class="category-view-header">
+            <h2 class="category-view-title">BOOK BY CATEGORY</h2>
+            <p class="category-view-address">676 Yonge St.</p>
+          </div>
           <div class="main-card-container">
             <!-- Main: Hair -->
             <div class="main-card" onclick="showSubCategories('hair')">
@@ -247,7 +305,8 @@
         </div>
 
         <!-- 2. Hair Sub-Categories -->
-        <div id="hair-sub-categories" class="selection-view hidden">
+        <!-- NY VERSION: hair-sub-categories -->
+        <div id="hair-sub-categories-ny" class="selection-view hidden">
           <button class="back-to-main-btn" onclick="showMainCategories()">
             <i class="fas fa-arrow-left"></i> Back to Main
           </button>
@@ -280,8 +339,43 @@
           </div>
         </div>
 
+        <!-- DT VERSION: hair-sub-categories -->
+        <div id="hair-sub-categories-dt" class="selection-view hidden">
+          <button class="back-to-main-btn" onclick="showMainCategories()">
+            <i class="fas fa-arrow-left"></i> Back to Main
+          </button>
+          <div class="category-grid">
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=GCR432Q7EN5DRS7FN7GRKMAZ&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/hair/Promotion.webp" alt="Promotion">
+              <span>PROMOTION</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=23S5TTTT3ZQXGXCVQEMQNGJY&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/hair/womens hair.webp" alt="Women's Hair">
+              <span>WOMEN'S HAIR</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=32IGIVRNTQTG222355MD7XKP&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/hair/mens hair.webp" alt="Men's Hair">
+              <span>MEN'S HAIR</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=YPVHEQI7NHFR3HVBTVHZLLUI&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/hair/kids hair.webp" alt="Kids Hair">
+              <span>KIDS HAIR</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services/XSMZ7IPSIUCFBMXURU6TSUCR"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/hair/barber.webp?v=2" alt="Barber">
+              <span>BARBER</span>
+            </a>
+          </div>
+        </div>
+
         <!-- 3. Beauty Sub-Categories -->
-        <div id="beauty-sub-categories" class="selection-view hidden">
+        <!-- NY VERSION: beauty-sub-categories -->
+        <div id="beauty-sub-categories-ny" class="selection-view hidden">
           <button class="back-to-main-btn" onclick="showMainCategories()">
             <i class="fas fa-arrow-left"></i> Back to Main
           </button>
@@ -306,11 +400,11 @@
               <img src="optimized-images/category/beauty/brow.webp?v=2" alt="Eyebrow">
               <span>EYEBROW</span>
             </a>
-            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services?buttonTextColor=ffffff&category_id=N4YCIUBXLA6WTVDIBFMLABCK&color=80428b&locale=en&referrer=so"
+            <!-- <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services?buttonTextColor=ffffff&category_id=N4YCIUBXLA6WTVDIBFMLABCK&color=80428b&locale=en&referrer=so"
               class="category-item" target="_blank">
               <img src="optimized-images/category/beauty/nail.webp?v=2" alt="Nail & Pedi">
               <span>NAIL & PEDI</span>
-            </a>
+            </a> -->
             <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services?buttonTextColor=ffffff&category_id=U6NE3C233J24M3IXPG5223GP&color=80428b&locale=en&referrer=so"
               class="category-item" target="_blank">
               <img src="optimized-images/category/beauty/lash.webp" alt="Lashes">
@@ -338,11 +432,702 @@
             </a>
           </div>
         </div>
+
+        <!-- DT VERSION: beauty-sub-categories -->
+        <div id="beauty-sub-categories-dt" class="selection-view hidden">
+          <button class="back-to-main-btn" onclick="showMainCategories()">
+            <i class="fas fa-arrow-left"></i> Back to Main
+          </button>
+          <div class="category-grid">
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=GCR432Q7EN5DRS7FN7GRKMAZ&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/Promotion.webp" alt="Promotion">
+              <span>PROMOTION</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=QSXWB3F3G63K2LELTSCT5QD7&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/wedding.webp" alt="Wedding">
+              <span>WEDDING</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=UIBFDZ3LOBLHWS6YSG3TGZS4&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/make up.webp" alt="Makeup">
+              <span>MAKEUP</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=5YK2EG45EERFN7IOIOFRLGQ4&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/brow.webp?v=2" alt="Eyebrow">
+              <span>EYEBROW</span>
+            </a>
+            <!-- <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=N4YCIUBXLA6WTVDIBFMLABCK&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/nail.webp?v=2" alt="Nail & Pedi">
+              <span>NAIL & PEDI</span>
+            </a> -->
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=U6NE3C233J24M3IXPG5223GP&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/lash.webp" alt="Lashes">
+              <span>LASHES</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=TLMRK645HTLMUMAPGMTOPFI2&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/lip web.webp" alt="Lips">
+              <span>LIP BLUSH</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=BNGZI4GJLF2DRPH5LKXI3RF5&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/Eyeline.webp" alt="Eyeliner">
+              <span>EYELINER</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=PCNUFT3XQC7HX2FYCKPGLFAM&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/Hairline.webp" alt="Hair Line">
+              <span>HAIR LINE</span>
+            </a>
+            <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/LR0A0NMBVYXED/services?buttonTextColor=ffffff&category_id=C5XX5VKYA2GPZ4COFVXO4MGY&color=80428b&locale=en&referrer=so"
+              class="category-item" target="_blank">
+              <img src="optimized-images/category/beauty/Aesthetic.webp" alt="Aesthetic">
+              <span>AESTHETIC</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- <Services > -->
-    <section id="our-services">
+    <!-- <Services > (hidden - booking via BOOK BY LOCATION only) -->
+    <section id="our-services-ny" style="display: none;">
+      <div class="members-header">
+        <span class="subtitle">Our Services</span>
+      </div>
+      <div class="services-container">
+        <h1>Services</h1>
+
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>PROMOTION</strong> <span class="toggle-icon">−</span>
+          </div>
+          <div class="service-content active">
+            <div class="service-row">
+              <p>Promo - Balayage (Sombre, Ombre, Highlight, 탈색)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/DZLDWR4O54YE6ZJUVNZSGEPK"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - Perm (펌 프로모션) Digital, Setting, Grace, Elizabeth</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/HKMNRYR7AB3E5PUCA3ET3GNB"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - Holiday Makeup (메이크업 프로모션)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/7C6S3IXDAFUMKNZQE7UMIXW7"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - Eyebrow Special (반영구)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/VNPS6G5M2LRIN3552IVB3YD2"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - HAIR LINE SEMI PERMANENT (헤어라인 반영구)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/IZMSQE5JJXESH6VMHFI2M77T"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - EyeLiner, Semi Permanent (아이라이너)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/DUOIQQEMH77ZSHFW7AKSBM2O"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - ALL Lashes (래쉬)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/H3AK2LTIVVH43UOHCCBC2D3R"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - Botox (보톡스)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/4UBB2KG7MFGGURRG7EMFHTRD"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Promo - Kid’s Face Painting (Birthday Party & Group Service)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/256SP7VLP2SVB3VFKBB2STAF"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row1">
+              <p>PROMO - HAIRCUT & LASH Package<br>(BOOK SEPARATELY BELOW)</p>
+              <div class="service-row">
+                <p>Package Haircut</p>
+                <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/53UWDR6VN5JJPBFNTIW7W53V"
+                  class="book-button">Book</a>
+              </div>
+              <div class="service-row">
+                <p>Package Lash</p>
+                <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/H3AK2LTIVVH43UOHCCBC2D3R"
+                  class="book-button">Book</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- <Women's Hair> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Women's Hair</strong> <span class="toggle-icon">+</span>
+          </div>
+          <!-- 열고 닫을 컨텐츠 -->
+          <div class="service-content">
+            <!-- CUT 카테고리 (기본적으로 열려있음) -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>CUT</strong> <span class="sub-toggle-icon">−</span>
+              </div>
+              <div class="sub-category-content active">
+                <div class="service-row">
+                  <p>Women's Haircut & Styling</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/53UWDR6VN5JJPBFNTIW7W53V"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Bang Trim / Bang Cut (앞머리커트)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/FZWBFDZVJLQDSFFYWMWL3F6R"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- COLOR 카테고리 -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>COLOR</strong> <span class="sub-toggle-icon">+</span>
+              </div>
+              <div class="sub-category-content">
+                <div class="service-row">
+                  <p>Women's Balayage (Sombre & Ombre -발레야쥬, 솜브레, 옴브레)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/W3K745QRXBV2NEFNPSL5RYAE"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Color (Non-Bleach, 염색)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/ODZSZBCOV7H7K7UKSYTKGDD4"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Color (Bleach,탈색)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/OWLYLHDIGPJM6CBO4JC6RXQK"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Roots Touch - Color (뿌리염색)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/GRPKD3EHWJZ4JPNGH3MWCIMR"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Roots Touch - Bleach (뿌리탈색)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/ZYOUITBE3YF3QATL3RPM24YS"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- PERM 카테고리 -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>PERM</strong> <span class="sub-toggle-icon">+</span>
+              </div>
+              <div class="sub-category-content">
+                <div class="service-row">
+                  <p>Women's "Magic" Straight Perm (매직스트레이트)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/325IHL4FZUB5LYGCU4TISQE5"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Volume "Magic" Straight Perm (볼륨매직스트레이트)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/OSWB2RFBM3GUACFYQZWSIGIO"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Setting & Digital Perm (디지털 OR 세팅펌)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/OP72CNTO7JWRZZSQSIKUVTVW"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Magic Setting Perm (Straight+Curl, 매직세팅)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/SUAYYRVBHAMOIH7LGMBLD2AP"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Regular Perm (일반펌)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/5N7NLMYMN6A5XYO5AS3QFQ72"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Bang Perm (앞머리펌)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/CEPBYR3O636MYCB3OFELQEO4"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Volume Roots Perm (뿌리펌)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/TO2VBD6JW6HJR2L73JCQAXFT"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- TREATMENT 카테고리 -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>TREATMENT</strong> <span class="sub-toggle-icon">+</span>
+              </div>
+              <div class="sub-category-content">
+                <div class="service-row">
+                  <p>Women's Hair Moisturizing Treatment (트리트먼트)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/BTO5EZDIK5WAIAZ5YJGLFARE"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Scalp & Hair Treatment (두피+헤어케어)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UBO3VG37M2ZBQVFVJNWE4DXA"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- STYLING 카테고리 -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>STYLING</strong> <span class="sub-toggle-icon">+</span>
+              </div>
+              <div class="sub-category-content">
+                <div class="service-row">
+                  <p>Women's Regular Blow Dry & Styling (일반 웨이브 스타일링)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UK4UF4RFXM3HZY2M47LH7MCA"
+                    class="book-button">Book</a>
+                </div>
+                <div class="service-row">
+                  <p>Women's Special Blow Dry & Styling (스페셜 스타일링)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UK4UF4RFXM3HZY2M47LH7MCA"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- EXTENSION 카테고리 -->
+            <div class="sub-category">
+              <div class="sub-category-header" onclick="toggleSubCategory(this, event)">
+                <strong>EXTENSION</strong> <span class="sub-toggle-icon">+</span>
+              </div>
+              <div class="sub-category-content">
+                <div class="service-row">
+                  <p>Women's Hair Extension (붙임머리)</p>
+                  <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/N4UWPKXHY6U73L6JE7H37VHM"
+                    class="book-button">Book</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <Men's Hair> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Men's Hair</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Men's Haircut (남성커트)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/3NOHRAGKHZPUUNN6Y5Y5I3VY"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Barber Style Fade & Haircut (남성 페이드 & 바버 커트)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/XSMZ7IPSIUCFBMXURU6TSUCR"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Barber Style Fade & Haircut with Beard Trim (남성 바버 페이드 커트 + 구루밍)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/YGYOON3FTHXO3ZNYHMWN5DNV"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Perm (일반, 디자이너펌)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/LTUE2V4SCEKDAMK5HMJYIGUK"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Down Perm (다운펌)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/G2SPU5BREZUPS6FIAOWIVTPH"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Special Blow Dry & Styling (스타일링)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UO2CLNDQY75OQUILSQXU6Q4S"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Haircut & Scalp & Hair Spa (커트+두피케어)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/TOJSPNURRNCRGU7FNQOVJVD3"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Color (Non-Bleach, 염색)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/KVPTFEJJS7222RIXRXVCDX6Y"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Color (Bleach, 탈색)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/L6Y2PG3A5M6KWED23J4X5LUJ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Volume Magic (볼륨매직)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UR67BM323ISUJEDZZTARFVML"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Hair Treatment (트리트먼트)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UN2XI3WLRRHGPQY5NRXPT5QB"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Men's Scalp & Hair Treatment (두피+헤어케어)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/PBOEUSOOVOOZU5XE243RZMRO"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <Kids Hair> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Kids Hair</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Girls' (Toddler) Hair Cut</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/NPR4QK5YZ4LICFMQVKZGGBXB"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Boys' (Toddler) Hair Cut</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/WQEELYWPD7ICXHBHY2BS6WRF"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Girl's Perm</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/4GBHTINVLL6J47VWOC7ALRRG"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Boy's Perm</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/C663A66LSOKAKEHEW6QVERQJ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Kid's Face Painting (키즈 페이스 페인팅)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/HESSRKGEEK3SNJNNUU7WZWQ7"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+        <!-- <Makeup> -->   
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Makeup</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Personal Daily Make Up (메이크업)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/IATB3OUX5NBFR7GD4JVK3QAV"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Daily Make up & Hair Styling (스타일링 & 메이크업)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/LQKYJUQIJS6J2KLQ5JWFVJ2I"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Special Day Make Up (스페셜 데이 메이크업)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/IB2O43W5EQASDSKZWWXXTMXI"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Special Day Make Up & Styling(스폐셜데이 메이크업 & 스타일링)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/PODUPHMYF4R436KGH3472AAX"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Personalized 1:1 Make UP Class (메이크업 클래스)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/OQZ2KOHTJEUSBZZQIDHSNQWA"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Personal Color Analysis (펄스널컬러)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/KDXS2M4NT7TPG5NEOC5YQPAK"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <EyeBrow> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>EyeBrow</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>EyeBrow Service Consultation - FREE</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/SHF74CEUSQEVR2QF2C4J4T6F"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Semi Permanent Eyebrow Enhancements (Microblading & Shading Combo)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/LLHR47JRIJAVMC7KEOCWAOM6"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Semi Permanent Nano Brows (나노 눈썹 시술)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/O2OTDADUDHP2CH4PI7PI77AS"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Semi Permanent Nano Combo Brows (나노 콤보 눈썹)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/QZJ6WX2XELHPIBCDRCSN3LVN"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Semi Permanent Microblading & Shading Re-Touch</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/ZBRP3OXT44RJRZH2UGWULFGS"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Semi Permanent NanoBrow Retouch (나노 리터치)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/NTHZTTMNU2ZFKXJVYHSUHO2W"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Soft Innner Eyeliner (소프트 반영구 아이라이너)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/QFOEP5634ZRFNVUOP5HDXZSQ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Designed Eyeliner (디자인 반영구 아이라이너)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/YPKJQGASWXI4NX4OFRJ22IYG"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Keratin Lift & Perm</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/YWWOOE4CSTRFIJ2U3OBSHYZ4"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+        <!-- <Eyeliner> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>EYELINER</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Soft Innner Eyeliner (소프트 반영구 아이라이너)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/QFOEP5634ZRFNVUOP5HDXZSQ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Designed Eyeliner (디자인 반영구 아이라이너)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/YPKJQGASWXI4NX4OFRJ22IYG"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+        <!-- <Hair Line> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Hair Line</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Hair Line - Semi Permanent with Retouch (헤어라인, 리터치 포함)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/JLMDJYQ66KWU33TVQ5OBH3G5"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Hair Line - Semi Permanent Retouch Only (헤어라인 리터치)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/WFVLPLCJMBGUNYHHVAX2DSCN"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+        <!-- <Lips> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>LIPS</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Lip Blush Semi-Permanent (입술 반영구, 리터치 포함)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/TEVIJSAC43N7DWYABQU2YK62"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lip Blush Semi-Permanent (입술 반영구 리터치)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/4QHFGSXKLNRCATVD75URDKZD"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- <Lashes> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Lashes</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Classic Lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/ZJE5PDRWZIDLVTUZKOKGASFI"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Hybrid Lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/NKBX5SBXKNNBN3IMWAD5MUTT"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Volume Lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/XQGJGETJHA3FSTNKBCQ72ZGY"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Mega Volume lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/JQUE4EGUMBJ6EJQV7MTGHZNJ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Animated Lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/4OBT22ARTNOGTSWFUKFFVVQ7"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Keratin Perm & Lift</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/CEAKIG3S35BQMR7IHSLWD4P7"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Keratin Lift Dual Perm</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/ONFYUVPKMPS6H3L3QUWP4YA6"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Tint</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/N7WXP32ECAA5IFGASI4TUB6O"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lift & Tint Lash</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/OMHPZAFHKNGAH3BKNHWZOKJ3"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Removal</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/3IOAYEL2I2HNCYLW7NI7DWQT"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Lash Touch Up & Refill</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/BL6AE6XOE6B6BSEPOUHXDT6R"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <Aesthetic> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Aesthetic</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Aesthetic Service Consultation - FREE</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/2JSLP6I6Y5LJBZ4IUGRBCYFQ"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Botox (주름 보톡스)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/RAUTWJQQYK6RPQTIDHAV6WEV"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Botox (Swan Neck, Calf Slimming, 승모근, 종아리)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/YYPFJ7QI56Y7EF3SCUROM3DI"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Botox Re-Touch(재방문)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/UVSOQQ7F2VWQKEJTKBFWSUAI"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Filler 필러(Lip/Cheek/Chin/Jawline/Nasolabial)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/6DNWAOEKNMWA47OLEQWR2WFR"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Hair Restoration (PRP) 탈모치료</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/3UUY7NPR7KCHN5E6J7XQJN32"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Skin booster/ Microneedling (PRP) 피부 재생 시술 (엑소좀/자가혈)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/HNKU4GFHYCYGEIUQE67HRLJG"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Fat Dissolve 지방 제거 시술 (이중턱/팔뚝살/뱃살/심술보)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/VQ5EQDUVG4TJ4WJXJQGRXECA"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Fat Dissolve (Include pre-aneasthetic)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/WLK2356G7SGEHU37BSGFYEXC"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Follow Up - All Service - Aesthetic</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/E6GBKCOAYJCTGV76FP3EF6LD"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+        <!-- <Wedding> -->
+        <div class="service-item">
+          <div class="service-header" onclick="toggleService(this, event)">
+            <strong>Wedding</strong> <span class="toggle-icon">+</span>
+          </div>
+          <div class="service-content">
+            <div class="service-row">
+              <p>Mobile Wedding Package Service (출장웨딩 패키지) <br> - Please DM or call - This is not appointment</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/44RD2UDVY3QAUE2GMEE7YQG5"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Wedding Make Up (신부 메이크업)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/6SXOTBLOUWMONW6DMKOK7YBA"
+                class="book-button">Book</a>
+            </div>
+            <div class="service-row">
+              <p>Wedding Make Up & UpDo Styling (신부 메이크업 & 스타일링)</p>
+              <a href="https://book.squareup.com/appointments/e6a0a8a8-5021-462f-911e-c7bdd85626b8/location/T4Q21JQTENKD8/services/HGKZLH7YEZWAQAGNLWDR5JFI"
+                class="book-button">Book</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="our-services-dt" style="display:none;">
       <div class="members-header">
         <span class="subtitle">Our Services</span>
       </div>
@@ -884,7 +1669,7 @@
             </div>
           </div>
         </div>
-
+        <!-- <Aesthetic> -->
         <div class="service-item">
           <div class="service-header" onclick="toggleService(this, event)">
             <strong>Aesthetic</strong> <span class="toggle-icon">+</span>
@@ -942,7 +1727,7 @@
             </div>
           </div>
         </div>
-
+        <!-- <Wedding> -->
         <div class="service-item">
           <div class="service-header" onclick="toggleService(this, event)">
             <strong>Wedding</strong> <span class="toggle-icon">+</span>
@@ -983,11 +1768,13 @@
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="hair">HAIR</button>
             <button class="filter-btn" data-filter="beauty">BEAUTY</button>
+            <button class="filter-btn" data-filter="ny">North York</button>
+            <button class="filter-btn" data-filter="dt">Downtown</button>
           </div>
 
           <div class="stylist-slider-container">
             <div class="stylist-grid">
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/sunny.webp" alt="Sunny - Hair Stylist" loading="lazy">
                 </div>
@@ -996,9 +1783,10 @@
                   <p>President</p>
                   <span class="specialty">Lead Hairstylist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/sarahR.webp" alt="SarahR - Senior Hair Stylist" loading="lazy">
                 </div>
@@ -1007,9 +1795,10 @@
                   <p>Lead Hair Stylist</p>
                   <span class="specialty">Perm Specialist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/mary.webp" alt="Mary - Senior Hair Stylist" loading="lazy">
                 </div>
@@ -1018,42 +1807,58 @@
                   <p>Master Colorist</p>
                   <span class="specialty">Bleach & Color Specialist</span>
                   <span class="languages">Speaks: English, Laos</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/suzi.webp" alt="Suzi - Hair Stylist" loading="lazy">
                 </div>
                 <div class="stylist-info">
                   <h3>SUZI</h3>
-                  <p>Senior Hair Stylist</p>
+                  <p>LEAD HAIR STYLIST</p>
                   <span class="specialty">Perm Specialist</span>
                   <span class="languages">Speaks: Basic English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/Liam.webp" alt="Liam - Senior Hair Stylist" loading="lazy">
                 </div>
                 <div class="stylist-info">
                   <h3>Liam</h3>
-                  <p>Senior Hair Stylist</p>
+                  <p>Senior HAIR STYLIST</p>
                   <span class="specialty">Color Specialist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/Hazel.webp" alt="Hazel - Hair Stylist" loading="lazy">
                 </div>
                 <div class="stylist-info">
                   <h3>Hazel</h3>
-                  <p>Hair Stylist</p>
+                  <p>Senoir Hair Stylist</p>
                   <span class="specialty">Perm Specialist</span>
                   <span class="languages">Speaks: Basic English, Korean</span>
+                  <span class="locations">Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny">
+                <div class="stylist-image">
+                  <img src="optimized-images/team/Bella.webp" alt="Bella - Senior Hair Stylist" loading="lazy">
+                </div>
+                <div class="stylist-info">
+                  <h3>Bella</h3>
+                  <p>Senior Hair Stylist</p>
+                  <span class="specialty">Perm Specialist</span>
+                  <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York</span>
+                </div>
+              </div>
+              <div class="stylist-card" data-category="hair" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/nina.webp" alt="Nina - Hairstylist" loading="lazy">
                 </div>
@@ -1062,9 +1867,10 @@
                   <p>Hair Stylist</p>
                   <span class="specialty">Perm Specialist</span>
                   <span class="languages">Speaks: Basic English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/jackie.webp" alt="Jackie - Senior Colorist" loading="lazy">
                 </div>
@@ -1073,9 +1879,10 @@
                   <p>Senior Colorist</p>
                   <span class="specialty">Color & Balayage Specialist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/daniel.webp" alt="Daniel - Hair Stylist" loading="lazy">
                 </div>
@@ -1084,9 +1891,10 @@
                   <p>Hair Stylist</p>
                   <span class="specialty">Color & Styling Specialist</span>
                   <span class="languages">Speaks: English,Spanish,Russian, Basic Korean</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="hair">
+              <div class="stylist-card" data-category="hair" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/Jeffrey.webp" alt="Jeffrey - Barber" loading="lazy">
                 </div>
@@ -1095,9 +1903,10 @@
                   <p>Barber</p>
                   <span class="specialty">Men's Fade & Beard Trim Specialist</span>
                   <span class="languages">Speaks: English</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="beauty">
+              <div class="stylist-card" data-category="beauty" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/gabie.webp" alt="Gabie - Eyebrow & Lash Makeup Artist" loading="lazy">
                 </div>
@@ -1106,9 +1915,10 @@
                   <p>Eyebrow & Lash Artist</p>
                   <span class="specialty">Semi Permanent Specialist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="beauty">
+              <div class="stylist-card" data-category="beauty" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/ella.webp" alt="ella - Professional Make-Up Specialist"
                     loading="lazy">
@@ -1118,10 +1928,11 @@
                   <p>Beauty Artist</p>
                   <span class="specialty">Professional Make-Up Specialist</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
 
-              <div class="stylist-card" data-category="beauty">
+              <div class="stylist-card" data-category="beauty" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/lysandra.webp" alt="Lysandra - Beauty Expert" loading="lazy">
                 </div>
@@ -1130,9 +1941,10 @@
                   <p>Beauty Expert</p>
                   <span class="specialty">Certified Lash Tech x4, Educator</span>
                   <span class="languages">Speaks: English, Laos</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="beauty">
+              <div class="stylist-card" data-category="beauty" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/LeAnna.webp" alt="LeAnna - Nail & Lash Artist" loading="lazy">
                 </div>
@@ -1141,9 +1953,10 @@
                   <p>NAIL & LASH ARTIST</p>
                   <span class="specialty">Professional Nail & Lash Artist</span>
                   <span class="languages">Speaks: Basic English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card" data-category="beauty">
+              <div class="stylist-card" data-category="beauty" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/yujin.webp" alt="Yujin - RN, Certified Advanced Nurse Injector"
                     loading="lazy">
@@ -1153,9 +1966,22 @@
                   <p>Registered Nurse</p>
                   <span class="specialty">Certified Advanced Nurse Injector</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-category="beauty" data-location="dt">
+                <div class="stylist-image">
+                  <img src="optimized-images/team/nanhee.webp" alt="Nanhee - RN, Certified Advanced Nurse Injector"
+                    loading="lazy">
+                </div>
+                <div class="stylist-info">
+                  <h3>NANHEE</h3>
+                  <p>Registered Nurse</p>
+                  <span class="specialty">Certified Advanced Nurse Injector</span>
+                  <span class="languages">Speaks: English, Korean</span>
+                </div>
+              </div>
+              <div class="stylist-card" data-location="ny dt">
                 <div class="stylist-image">
                   <img src="optimized-images/team/hai.webp" alt="Hai - Director" loading="lazy">
                 </div>
@@ -1164,9 +1990,10 @@
                   <p>Director</p>
                   <span class="specialty">Director, Operations</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York, Downtown</span>
                 </div>
               </div>
-              <div class="stylist-card">
+              <div class="stylist-card" data-location="ny">
                 <div class="stylist-image">
                   <img src="optimized-images/team/Jayden.webp" alt="Jayden - Manager" loading="lazy">
                 </div>
@@ -1175,6 +2002,7 @@
                   <p>Manager</p>
                   <span class="specialty">Manager, Operations</span>
                   <span class="languages">Speaks: English, Korean</span>
+                  <span class="locations">North York</span>
                 </div>
               </div>
             </div>
@@ -1485,51 +2313,19 @@
           <h2>BUSINESS INFO</h2>
         </div>
 
+        <!-- North York Location -->
         <div class="direction-section">
-          <!-- Map Column (Right -> Left) -->
           <div class="map-column map-container">
             <div class="business-map">
-              <div id="map"></div>
-              <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                  // Initialize Map centered on the main location
-                  const map = L.map('map', {
-                    scrollWheelZoom: false // Disable scroll zoom for better UX
-                  }).setView([43.7963, -79.4168], 15);
-
-                  // Add CartoDB Positron Tiles (Luxury, Clean Look)
-                  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                    subdomains: 'abcd',
-                    maxZoom: 20
-                  }).addTo(map);
-
-                  // Custom Icon Definition
-                  // Custom HTML Marker with Text
-                  const luxuryIcon = L.divIcon({
-                    className: 'luxury-text-marker',
-                    html: '<div class="marker-pin"><span>ADELE<br>HAIR &<br>BEAUTY</span></div>',
-                    iconSize: [60, 60],
-                    iconAnchor: [30, 30], // Center it
-                    popupAnchor: [0, -30]
-                  });
-
-                  // Location 1: North York
-                  const loc1 = L.marker([43.7963, -79.4168], { icon: luxuryIcon }).addTo(map);
-                  loc1.bindPopup('<b>Adele Hair & Beauty</b><br>6285 Yonge St');
-                });
-              </script>
+              <div id="map-ny"></div>
             </div>
           </div>
-
-          <!-- Info Column (Left -> Right) -->
           <div class="info-column book-visit">
             <div class="store-list">
               <div class="store-item">
-                <h3>Adele Hair & Beauty</h3>
+                <h3>Adele Hair & Beauty <span class="store-location-label">North York</span></h3>
                 <p class="store-address">6285 Yonge St<br>North York, ON M2M 3X6</p>
                 <p class="store-phone">+1 416-222-4100</p>
-
                 <div class="store-hours-list">
                   <div class="hours-row">
                     <span>Weekdays</span>
@@ -1541,16 +2337,74 @@
                   </div>
                   <div class="hours-row">
                     <span>Sunday</span>
-                    <span>11 a.m. - 6 p.m</span>
+                    <span>10 a.m. - 6 p.m</span>
                   </div>
                 </div>
-
               </div>
-
-
             </div>
           </div>
         </div>
+
+        <!-- Downtown Location -->
+        <div class="direction-section">
+          <div class="map-column map-container">
+            <div class="business-map">
+              <div id="map-dt"></div>
+            </div>
+          </div>
+          <div class="info-column book-visit">
+            <div class="store-list">
+              <div class="store-item">
+                <h3>Adele Hair & Beauty <span class="store-location-label">Downtown</span></h3>
+                <p class="store-address">676 Yonge St<br>Toronto, ON M4Y 2A6</p>
+                <p class="store-phone">+1 647-351-9600</p>
+                <div class="store-hours-list">
+                  <div class="hours-row">
+                    <span>Weekdays</span>
+                    <span>10 a.m. - 7 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Saturday</span>
+                    <span>10 a.m. - 7 p.m</span>
+                  </div>
+                  <div class="hours-row">
+                    <span>Sunday</span>
+                    <span>10 a.m. - 7 p.m</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const luxuryIcon = L.divIcon({
+              className: 'luxury-text-marker',
+              html: '<div class="marker-pin"><span>ADELE<br>HAIR &<br>BEAUTY</span></div>',
+              iconSize: [60, 60],
+              iconAnchor: [30, 30],
+              popupAnchor: [0, -30]
+            });
+
+            const tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+            const tileOpts = {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+              subdomains: 'abcd',
+              maxZoom: 20
+            };
+
+            const mapNY = L.map('map-ny', { scrollWheelZoom: false }).setView([43.7952, -79.4192], 16);
+            L.tileLayer(tileUrl, tileOpts).addTo(mapNY);
+            L.marker([43.7952, -79.4192], { icon: luxuryIcon }).addTo(mapNY)
+              .bindPopup('<b>Adele Hair & Beauty</b><br>6285 Yonge St<br>North York, ON M2M 3X6');
+
+            const mapDT = L.map('map-dt', { scrollWheelZoom: false }).setView([43.6673, -79.3857], 17);
+            L.tileLayer(tileUrl, tileOpts).addTo(mapDT);
+            L.marker([43.6673, -79.3857], { icon: luxuryIcon }).addTo(mapDT)
+              .bindPopup('<b>Adele Hair & Beauty</b><br>676 Yonge St<br>Toronto, ON M4Y 2A6');
+          });
+        </script>
       </div>
     </section>
 

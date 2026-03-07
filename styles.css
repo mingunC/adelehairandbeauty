@@ -663,6 +663,13 @@ main {
     margin-bottom: 0;
 }
 
+.stylist-info .locations {
+    font-size: 0.7rem;
+    line-height: 1.1;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
 .members-section {
     padding: 2rem 1rem;
 }
@@ -909,6 +916,30 @@ main {
     }
 }
 
+/* Category view header (BOOK BY CATEGORY + address) */
+.category-view-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.category-view-title {
+    font-family: 'Castoro Titling', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+}
+.category-view-address {
+    font-family: 'Castoro Titling', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    margin: 0;
+}
+
 /* Main Cards Container */
 .main-card-container {
     display: flex;
@@ -980,6 +1011,37 @@ main {
     letter-spacing: 6px;
 }
 
+.main-card.coming-soon {
+    pointer-events: none;
+    cursor: default;
+}
+
+.main-card.coming-soon .card-image {
+    position: relative;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.coming-soon-text {
+    font-family: 'Castoro Titling', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
 /* Back Button */
 .back-to-main-btn {
     display: flex;
@@ -1011,12 +1073,16 @@ main {
     }
 
     .main-card {
-        aspect-ratio: 16/9;
-        /* More horizontal on mobile */
+        aspect-ratio: 4/3;
     }
 
     .main-card .card-title {
         font-size: 1.5rem;
+    }
+
+    .coming-soon-text {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
     }
 }
 
@@ -1570,6 +1636,22 @@ main {
     margin-top: 5px;
 }
 
+.stylist-info .locations {
+    display: block;
+    font-size: 0.8rem;
+    color: #555;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Our Team: hide location text, filtering still works via data-location */
+#team .stylist-info .locations {
+    display: none;
+}
+
 @media (max-width: 1200px) {
     .stylist-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1984,14 +2066,15 @@ li {
 .direction-section {
     display: flex;
     flex-direction: row;
-    /* Ensure row layout for content */
     justify-content: space-between;
     padding: 0;
-    /* Remove padding as it's handled by children */
     background-color: var(--light-color);
     width: 100%;
     height: 600px;
-    /* Set height here for map/info area */
+}
+
+.direction-section + .direction-section {
+    margin-top: 2rem;
 }
 
 .direction-section .book-visit,
@@ -2065,7 +2148,9 @@ li {
 
     .direction-section .map-container,
     .direction-section .business-map,
-    .direction-section #map {
+    .direction-section #map,
+    .direction-section #map-ny,
+    .direction-section #map-dt {
         width: 100%;
         height: 400px !important;
         /* Force height on mobile */
@@ -2246,11 +2331,10 @@ li {
     height: 100%;
 }
 
-#map {
+#map, #map-ny, #map-dt {
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* Ensure map is interactable */
 }
 
 /* Custom Marker Styling */
@@ -2284,7 +2368,7 @@ li {
     text-transform: uppercase;
 }
 
-/* Info Column - Right (45%) */
+/* Info Column - Right (45%), addresses stacked vertically */
 .info-column {
     width: 45%;
     height: 100%;
@@ -2293,6 +2377,19 @@ li {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+}
+
+.info-column.stores-stacked .store-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.store-location-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .locator-header {

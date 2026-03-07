@@ -551,11 +551,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Reset animation
                     card.classList.remove('fade-in');
 
-                    const categories = card.getAttribute('data-category');
+                    const category = card.getAttribute('data-category') || '';
+                    const locationAttr = card.getAttribute('data-location') || '';
+                    const locations = locationAttr.split(/\s+/).filter(Boolean);
 
-                    if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
+                    let show = false;
+                    if (filterValue === 'all') {
+                        show = true;
+                    } else if (filterValue === 'hair' || filterValue === 'beauty') {
+                        show = category && category.includes(filterValue);
+                    } else if (filterValue === 'ny' || filterValue === 'dt') {
+                        show = locations.includes(filterValue);
+                    }
+
+                    if (show) {
                         card.classList.remove('hidden');
-                        // Trigger reflow to restart animation
                         void card.offsetWidth;
                         card.classList.add('fade-in');
                     } else {
@@ -641,16 +651,130 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ========== New Category Selection Logic ==========
 
+window.currentLocation = 'ny'; // 'ny' or 'dt'
+
+window.showLocationSelection = function () {
+    const locSelection = document.getElementById('location-selection');
+    const sectionHeading = document.getElementById('service-categories-heading');
+    if (sectionHeading) {
+        sectionHeading.style.display = '';
+        sectionHeading.textContent = 'BOOK BY LOCATION';
+    }
+    if (locSelection) {
+        locSelection.classList.remove('hidden');
+        locSelection.classList.add('active');
+    }
+    ['ny', 'dt'].forEach(loc => {
+        const main = document.getElementById(`main-category-selection-${loc}`);
+        if (main) {
+            main.classList.remove('active');
+            main.classList.add('hidden');
+        }
+        document.getElementById(`hair-sub-categories-${loc}`).classList.remove('active');
+        document.getElementById(`hair-sub-categories-${loc}`).classList.add('hidden');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.remove('active');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.add('hidden');
+    });
+    const section = document.getElementById('service-categories');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+window.showCategories = function (location) {
+    window.currentLocation = (location === 'north-york' ? 'ny' : 'dt');
+    const locSelection = document.getElementById('location-selection');
+    const sectionHeading = document.getElementById('service-categories-heading');
+
+    if (sectionHeading) {
+        sectionHeading.style.display = 'none';
+    }
+
+    if (locSelection) {
+        locSelection.classList.remove('active');
+        locSelection.classList.add('hidden');
+    }
+
+    // Hide all sub-categories and services
+    ['ny', 'dt'].forEach(loc => {
+        document.getElementById(`hair-sub-categories-${loc}`).classList.add('hidden');
+        document.getElementById(`hair-sub-categories-${loc}`).classList.remove('active');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.add('hidden');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.remove('active');
+
+        let services = document.getElementById(`our-services-${loc}`);
+        if (services) services.style.display = 'none';
+    });
+
+    // Hide the other location's main selection
+    const otherLoc = window.currentLocation === 'ny' ? 'dt' : 'ny';
+    const otherMain = document.getElementById(`main-category-selection-${otherLoc}`);
+    if (otherMain) {
+        otherMain.classList.remove('active');
+        otherMain.classList.add('hidden');
+    }
+
+    // Show correct location main selection
+    const mainSelection = document.getElementById(`main-category-selection-${window.currentLocation}`);
+    if (mainSelection) {
+        mainSelection.classList.remove('hidden');
+        mainSelection.classList.add('active');
+    }
+
+    // Our Services section hidden - booking via BOOK BY LOCATION only
+    const services = document.getElementById(`our-services-${window.currentLocation}`);
+    if (services) {
+        services.style.display = 'none';
+    }
+
+    const section = document.getElementById('service-categories');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+window.showLocations = function () {
+    const locSelection = document.getElementById('location-selection');
+    const headerText = document.getElementById('location-header-text');
+    const mainHeaderText = document.getElementById('main-header-text');
+
+    if (mainHeaderText) mainHeaderText.textContent = 'BOOK BY LOCATION';
+
+    if (headerText) {
+        headerText.textContent = '';
+        headerText.style.display = 'none';
+    }
+
+    // Hide all main and sub selections
+    ['ny', 'dt'].forEach(loc => {
+        const main = document.getElementById(`main-category-selection-${loc}`);
+        if (main) {
+            main.classList.remove('active');
+            main.classList.add('hidden');
+        }
+
+        document.getElementById(`hair-sub-categories-${loc}`).classList.remove('active');
+        document.getElementById(`hair-sub-categories-${loc}`).classList.add('hidden');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.remove('active');
+        document.getElementById(`beauty-sub-categories-${loc}`).classList.add('hidden');
+    });
+
+    if (locSelection) {
+        locSelection.classList.remove('hidden');
+        locSelection.classList.add('active');
+    }
+
+    const section = document.getElementById('service-categories');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 window.showSubCategories = function (category) {
-    const mainSelection = document.getElementById('main-category-selection');
-    const hairSub = document.getElementById('hair-sub-categories');
-    const beautySub = document.getElementById('beauty-sub-categories');
+    const loc = window.currentLocation;
+    const mainSelection = document.getElementById(`main-category-selection-${loc}`);
+    const hairSub = document.getElementById(`hair-sub-categories-${loc}`);
+    const beautySub = document.getElementById(`beauty-sub-categories-${loc}`);
 
-    // Hide Main Selection
-    mainSelection.classList.remove('active');
-    mainSelection.classList.add('hidden');
+    if (mainSelection) {
+        mainSelection.classList.remove('active');
+        mainSelection.classList.add('hidden');
+    }
 
-    // Show appropriate sub-category
     if (category === 'hair') {
         hairSub.classList.remove('hidden');
         hairSub.classList.add('active');
@@ -663,31 +787,26 @@ window.showSubCategories = function (category) {
         hairSub.classList.add('hidden');
     }
 
-    // Scroll to top of section for better UX
     const section = document.getElementById('service-categories');
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
 window.showMainCategories = function () {
-    const mainSelection = document.getElementById('main-category-selection');
-    const hairSub = document.getElementById('hair-sub-categories');
-    const beautySub = document.getElementById('beauty-sub-categories');
+    const loc = window.currentLocation;
+    const mainSelection = document.getElementById(`main-category-selection-${loc}`);
+    const hairSub = document.getElementById(`hair-sub-categories-${loc}`);
+    const beautySub = document.getElementById(`beauty-sub-categories-${loc}`);
 
-    // Hide Sub-Categories
     hairSub.classList.remove('active');
     hairSub.classList.add('hidden');
     beautySub.classList.remove('active');
     beautySub.classList.add('hidden');
 
-    // Show Main Selection
-    mainSelection.classList.remove('hidden');
-    mainSelection.classList.add('active');
-
-    // Scroll to top of section
-    const section = document.getElementById('service-categories');
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (mainSelection) {
+        mainSelection.classList.remove('hidden');
+        mainSelection.classList.add('active');
     }
+
+    const section = document.getElementById('service-categories');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
