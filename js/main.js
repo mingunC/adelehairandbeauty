@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 // Don't close if clicking Services link (handled separately)
-                if (link.innerText === 'SERVICES') return;
+                if (link.classList.contains('nav-services-link')) return;
 
                 mobileNavToggle.classList.remove('active');
                 navList.classList.remove('active');
