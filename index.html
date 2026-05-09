@@ -211,14 +211,20 @@
   <!-- </header> -->
   <main>
     <section id="home" class="hero">
-      <!-- Video Background -->
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="optimized-images/hero-video.mp4" type="video/mp4">
-      </video>
-      <!-- Fallback Image for browsers that don't support video -->
+      <div class="hero-video-container">
+        <iframe 
+          class="hero-video"
+          src="https://www.youtube.com/embed/gZ0ZdWojYrk?autoplay=1&mute=1&loop=1&playlist=gZ0ZdWojYrk&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    
+      <!-- Fallback Image (영상이 뜨기 전 보여줄 배경) -->
       <img src="optimized-images/bg1.webp" alt="Adele Hair & Beauty Salon" class="hero-background hero-fallback">
+    
       <div class="hero-content">
-
         <p>EXPERIENCE LUXURY BEAUTY IN EVERY DETAIL</p>
         <a href="https://adelehairandbeauty.square.site" class="cta-button" target="_blank">BOOK NOW</a>
       </div>

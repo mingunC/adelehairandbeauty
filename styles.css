@@ -236,11 +236,6 @@ main {
     border-radius: 1px;
 }
 
-/* Hide fallback image when video is playing */
-.hero-video:not([src=""])~.hero-fallback {
-    display: none;
-}
-
 /* Mobile Navigation */
 @media (max-width: 768px) {
     .navbar {
@@ -699,20 +694,35 @@ main {
     padding-bottom: 10vh;
 }
 
+/* YouTube background: clip a 16:9 iframe so it covers the hero like object-fit: cover */
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    /* 세로형 영상을 가로 화면에 꽉 채우기 위해 너비를 100vw로 두고 높이를 비율에 맞춰 크게 설정 */
+    width: 100vw;
+    height: 177.78vw; /* 9:16 비율을 가로 너비 기준으로 역산한 높이 */
+    
+    /* 최소 높이와 너비 설정으로 빈틈 방지 */
+    min-height: 100vh;
+    min-width: 56.25vh; 
+    
     transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
+    border: 0;
 }
 
-.hero-background {
+.hero > .hero-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -721,7 +731,7 @@ main {
     object-fit: cover;
     object-position: center;
     filter: brightness(0.7);
-    z-index: 0;
+    z-index: -1;
 }
 
 .hero::before {
@@ -3369,3 +3379,4 @@ footer {
     /* Override grid */
     padding: 20px 25px;
 }
+
