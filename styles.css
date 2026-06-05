@@ -2468,6 +2468,26 @@ li {
     margin-bottom: 1.5rem;
 }
 
+.store-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.store-map-link:hover {
+    opacity: 0.65;
+}
+
+.store-map-link svg {
+    flex-shrink: 0;
+}
+
 .hours-row {
     display: flex;
     justify-content: space-between;
