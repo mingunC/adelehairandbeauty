@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO: North York-specific signals for Google -->
+  <title>Adele Hair & Beauty – North York | 6285 Yonge St</title>
+  <meta name="description" content="Adele Hair & Beauty North York. Located at 6285 Yonge St, North York, ON M2M 3X6. Call +1 416-222-4100. Premium hair styling, coloring, perms, lashes, and beauty services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://adelehairandbeauty.com/north-york" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Adele Hair & Beauty – North York" />
+  <meta property="og:description" content="6285 Yonge St, North York, ON M2M 3X6 · +1 416-222-4100 · Luxury All-in-One Beauty Service" />
+  <meta property="og:url" content="https://adelehairandbeauty.com/north-york" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://adelehairandbeauty.com/optimized-images/main_hair.webp" />
+
+  <!-- Schema.org LocalBusiness – North York -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Adele Hair & Beauty North York",
+    "url": "https://adelehairandbeauty.com/north-york",
+    "telephone": "+14162224100",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6285 Yonge St",
+      "addressLocality": "North York",
+      "addressRegion": "ON",
+      "postalCode": "M2M 3X6",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.7802,
+      "longitude": -79.4165
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "11:00", "closes": "18:00" }
+    ],
+    "sameAs": ["https://adelehairandbeauty.com"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf8f5;
+      --charcoal: #1a1a1a;
+      --muted: #6b6560;
+      --accent: #80428b;
+      --border: #e8e2db;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); border-color: var(--accent); }
+
+    .hero {
+      margin-top: 61px;
+      padding: 80px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    main {
+      flex: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px 40px;
+      width: 100%;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .info-block { margin-bottom: 48px; }
+
+    .info-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--charcoal);
+    }
+
+    .info-value a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .info-value a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+
+    .hours-table tr td {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table tr:last-child td { border-bottom: none; }
+    .hours-table td:last-child { text-align: right; color: var(--muted); }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 0 48px;
+      opacity: 0.5;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn:hover { background: var(--charcoal); color: var(--cream); }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #6a3575; border-color: #6a3575; color: #fff; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 60px 20px 40px; }
+      main { padding: 48px 20px; }
+      footer { padding: 24px 20px; }
+      .cta-row { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="https://adelehairandbeauty.com">
+      Adele Hair &amp; Beauty
+    </a>
+    <a class="nav-back" href="https://adelehairandbeauty.com">← Main Site</a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Toronto · North York</p>
+    <h1 class="hero-title">Adele Hair &amp; Beauty<br><em>North York</em></h1>
+    <p class="hero-sub">6285 Yonge St · North York</p>
+  </section>
+
+  <main>
+
+    <div class="info-block">
+      <p class="info-label">Address</p>
+      <p class="info-value">
+        <a href="https://maps.google.com/?q=6285+Yonge+St+North+York+ON+M2M+3X6" target="_blank" rel="noopener">
+          6285 Yonge St<br>North York, ON M2M 3X6
+        </a>
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-block">
+      <p class="info-label">Phone</p>
+      <p class="info-value">
+        <a href="tel:+14162224100">+1 416-222-4100</a>
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-block">
+      <p class="info-label">Hours</p>
+      <table class="hours-table">
+        <tr><td>Weekdays</td><td>10 a.m. – 7 p.m.</td></tr>
+        <tr><td>Saturday</td><td>10 a.m. – 7 p.m.</td></tr>
+        <tr><td>Sunday</td><td>11 a.m. – 6 p.m.</td></tr>
+      </table>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://adelehairandbeauty.com">Book an Appointment</a>
+      <a class="btn" href="https://maps.google.com/?q=6285+Yonge+St+North+York+ON+M2M+3X6" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="https://adelehairandbeauty.com">adelehairandbeauty.com</a>
+    &nbsp;·&nbsp; North York &nbsp;·&nbsp; 6285 Yonge St
+  </footer>
+
+</body>
+</html>
