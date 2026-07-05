@@ -791,6 +791,10 @@ main {
     border-color: var(--light-color);
 }
 
+.cta-button.is-hidden {
+    display: none !important;
+}
+
 @media (max-width: 768px) {
     .hero {
         height: 60vh;
