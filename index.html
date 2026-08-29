@@ -31,13 +31,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Jost:wght@300;400;500&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Jost:wght@300;400;500&family=Roboto:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <!-- Leaflet Javascript -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
@@ -2398,109 +2396,142 @@
           <h2>BUSINESS INFO</h2>
         </div>
 
-        <!-- North York Location -->
-        <div class="direction-section">
-          <div class="map-column map-container">
-            <div class="business-map">
-              <div id="map-ny"></div>
-            </div>
-          </div>
-          <div class="info-column book-visit">
-            <div class="store-list">
-              <div class="store-item">
-                <h3>Adele Hair & Beauty <span class="store-location-label">North York</span></h3>
-                <p class="store-address">6285 Yonge St<br>North York, ON M2M 3X6</p>
-                <p class="store-phone">+1 416-222-4100</p>
-                <div class="store-hours-list">
-                  <div class="hours-row">
-                    <span>Weekdays</span>
-                    <span>10 a.m. - 7 p.m</span>
-                  </div>
-                  <div class="hours-row">
-                    <span>Saturday</span>
-                    <span>10 a.m. - 7 p.m</span>
-                  </div>
-                  <div class="hours-row">
-                    <span>Sunday</span>
-                    <span>11 a.m. - 6 p.m</span>
-                  </div>
-                </div>
-                <a href="https://maps.app.goo.gl/PtnPdLHv7B54ipLj6" class="store-map-link" target="_blank" rel="noopener" aria-label="Open North York location in Google Maps">
-                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                    <path fill="#4285F4" d="M19.5 9c0 1.7-.7 3.4-1.7 5L12 22l-5.8-8c-1-1.6-1.7-3.3-1.7-5a7.5 7.5 0 0 1 15 0z" opacity="0"/>
-                    <path fill="#1a73e8" d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 1.7.7 3.4 1.7 5L12 22l5.8-7.5c1-1.6 1.7-3.3 1.7-5A7.5 7.5 0 0 0 12 2zm0 10.3a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z"/>
-                  </svg>
-                  <span>Google Maps</span>
-                </a>
-              </div>
-            </div>
-          </div>
+        <div class="business-map-wrap">
+          <a class="open-in-maps"
+            href="https://www.google.com/maps/search/Adele+Hair+and+Beauty/@43.7313,-79.4024,11z"
+            target="_blank"
+            rel="noopener">Open in Maps</a>
+          <button type="button" class="map-type-toggle" id="map-type-toggle">Satellite</button>
+          <div id="map-locations" role="img" aria-label="Map of Adele Hair & Beauty North York and Downtown locations"></div>
         </div>
 
-        <!-- Downtown Location -->
-        <div class="direction-section">
-          <div class="map-column map-container">
-            <div class="business-map">
-              <div id="map-dt"></div>
-            </div>
-          </div>
-          <div class="info-column book-visit">
-            <div class="store-list">
-              <div class="store-item">
-                <h3>Adele Hair & Beauty <span class="store-location-label">Downtown</span></h3>
-                <p class="store-address">676 Yonge St<br>Toronto, ON M4Y 2A6</p>
-                <p class="store-phone">+1 647-351-9600</p>
-                <div class="store-hours-list">
-                  <div class="hours-row">
-                    <span>Weekdays</span>
-                    <span>10 a.m. - 7 p.m</span>
-                  </div>
-                  <div class="hours-row">
-                    <span>Saturday</span>
-                    <span>10 a.m. - 7 p.m</span>
-                  </div>
-                  <div class="hours-row">
-                    <span>Sunday</span>
-                    <span>11 a.m. - 6 p.m</span>
-                  </div>
-                </div>
-                <a href="https://maps.app.goo.gl/BkL8AWPRTrpd88q66" class="store-map-link" target="_blank" rel="noopener" aria-label="Open Downtown location in Google Maps">
-                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                    <path fill="#1a73e8" d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 1.7.7 3.4 1.7 5L12 22l5.8-7.5c1-1.6 1.7-3.3 1.7-5A7.5 7.5 0 0 0 12 2zm0 10.3a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z"/>
-                  </svg>
-                  <span>Google Maps</span>
-                </a>
+        <div class="store-cards">
+          <div class="store-item">
+            <h3>Adele Hair & Beauty <span class="store-location-label">North York</span></h3>
+            <p class="store-address">6285 Yonge St<br>North York, ON M2M 3X6</p>
+            <p class="store-phone">+1 416-222-4100</p>
+            <div class="store-hours-list">
+              <div class="hours-row">
+                <span>Weekdays</span>
+                <span>10 a.m. - 7 p.m</span>
+              </div>
+              <div class="hours-row">
+                <span>Saturday</span>
+                <span>10 a.m. - 7 p.m</span>
+              </div>
+              <div class="hours-row">
+                <span>Sunday</span>
+                <span>11 a.m. - 6 p.m</span>
               </div>
             </div>
+            <a href="https://maps.app.goo.gl/PtnPdLHv7B54ipLj6" class="store-map-link" target="_blank" rel="noopener" aria-label="Open North York location in Google Maps">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="#4285F4" d="M19.5 9c0 1.7-.7 3.4-1.7 5L12 22l-5.8-8c-1-1.6-1.7-3.3-1.7-5a7.5 7.5 0 0 1 15 0z" opacity="0"/>
+                <path fill="#1a73e8" d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 1.7.7 3.4 1.7 5L12 22l5.8-7.5c1-1.6 1.7-3.3 1.7-5A7.5 7.5 0 0 0 12 2zm0 10.3a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z"/>
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+          <div class="store-item">
+            <h3>Adele Hair & Beauty <span class="store-location-label">Downtown</span></h3>
+            <p class="store-address">676 Yonge St<br>Toronto, ON M4Y 2A6</p>
+            <p class="store-phone">+1 647-351-9600</p>
+            <div class="store-hours-list">
+              <div class="hours-row">
+                <span>Weekdays</span>
+                <span>10 a.m. - 7 p.m</span>
+              </div>
+              <div class="hours-row">
+                <span>Saturday</span>
+                <span>10 a.m. - 7 p.m</span>
+              </div>
+              <div class="hours-row">
+                <span>Sunday</span>
+                <span>11 a.m. - 6 p.m</span>
+              </div>
+            </div>
+            <a href="https://maps.app.goo.gl/BkL8AWPRTrpd88q66" class="store-map-link" target="_blank" rel="noopener" aria-label="Open Downtown location in Google Maps">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="#1a73e8" d="M12 2a7.5 7.5 0 0 0-7.5 7.5c0 1.7.7 3.4 1.7 5L12 22l5.8-7.5c1-1.6 1.7-3.3 1.7-5A7.5 7.5 0 0 0 12 2zm0 10.3a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z"/>
+              </svg>
+              <span>Google Maps</span>
+            </a>
           </div>
         </div>
 
         <script>
           document.addEventListener('DOMContentLoaded', () => {
-            const luxuryIcon = L.divIcon({
-              className: 'luxury-text-marker',
-              html: '<div class="marker-pin"><span>ADELE<br>HAIR &<br>BEAUTY</span></div>',
-              iconSize: [60, 60],
-              iconAnchor: [30, 30],
-              popupAnchor: [0, -30]
+            const locations = [
+              {
+                name: 'North York',
+                latlng: [43.795299, -79.4189836],
+                popup: '<b>Adele Hair & Beauty — North York</b><br>6285 Yonge St<br>North York, ON M2M 3X6'
+              },
+              {
+                name: 'Downtown',
+                latlng: [43.6673344, -79.3858477],
+                popup: '<b>Adele Hair & Beauty — Downtown</b><br>676 Yonge St<br>Toronto, ON M4Y 2A6'
+              }
+            ];
+
+            const map = L.map('map-locations', {
+              scrollWheelZoom: false,
+              zoomControl: false,
+              attributionControl: false
+            });
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+            L.control.attribution({ prefix: false, position: 'bottomleft' }).addTo(map);
+
+            const googleTiles = {
+              subdomains: ['0', '1', '2', '3'],
+              attribution: '&copy; Google',
+              maxZoom: 21
+            };
+            const roadmap = L.tileLayer(
+              'https://mt{s}.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}',
+              googleTiles
+            ).addTo(map);
+            const satellite = L.tileLayer(
+              'https://mt{s}.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}',
+              googleTiles
+            );
+
+            const typeBtn = document.getElementById('map-type-toggle');
+            typeBtn.addEventListener('click', () => {
+              const showSatellite = !map.hasLayer(satellite);
+              if (showSatellite) {
+                map.removeLayer(roadmap);
+                satellite.addTo(map);
+                typeBtn.textContent = 'Map';
+              } else {
+                map.removeLayer(satellite);
+                roadmap.addTo(map);
+                typeBtn.textContent = 'Satellite';
+              }
             });
 
-            const tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-            const tileOpts = {
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-              subdomains: 'abcd',
-              maxZoom: 20
-            };
+            const bounds = L.latLngBounds([]);
+            locations.forEach((loc) => {
+              L.circleMarker(loc.latlng, {
+                radius: 9,
+                color: '#ffffff',
+                weight: 2.5,
+                fillColor: '#ea4335',
+                fillOpacity: 1,
+                className: 'store-dot'
+              }).addTo(map)
+                .bindTooltip(loc.name, {
+                  permanent: true,
+                  direction: 'top',
+                  offset: [0, -6],
+                  className: 'store-label',
+                  opacity: 1
+                })
+                .bindPopup(loc.popup);
+              bounds.extend(loc.latlng);
+            });
 
-            const mapNY = L.map('map-ny', { scrollWheelZoom: false }).setView([43.7952, -79.4192], 16);
-            L.tileLayer(tileUrl, tileOpts).addTo(mapNY);
-            L.marker([43.7952, -79.4192], { icon: luxuryIcon }).addTo(mapNY)
-              .bindPopup('<b>Adele Hair & Beauty</b><br>6285 Yonge St<br>North York, ON M2M 3X6');
-
-            const mapDT = L.map('map-dt', { scrollWheelZoom: false }).setView([43.6673, -79.3857], 17);
-            L.tileLayer(tileUrl, tileOpts).addTo(mapDT);
-            L.marker([43.6673, -79.3857], { icon: luxuryIcon }).addTo(mapDT)
-              .bindPopup('<b>Adele Hair & Beauty</b><br>676 Yonge St<br>Toronto, ON M4Y 2A6');
+            map.fitBounds(bounds, { padding: [72, 56], maxZoom: 12 });
           });
         </script>
       </div>
@@ -2516,7 +2547,6 @@
         </div>
 
         <div class="about-intro-text">
-          <p class="location-text">LOCATED AT YONGE & STEELES IN TORONTO</p>
           <p class="main-desc">Adele Hair and Beauty offers a comprehensive range of premium beauty services in one
             elegant & modern space.</p>
         </div>
