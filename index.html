@@ -14,6 +14,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Adele Hair & Beauty - Luxury All-in-One Beauty Service</title>
   <meta name="description" content="Adele Hair & Beauty - Premium hair styling, coloring, perms, semi-permanent makeup, lashes, and aesthetic services in Toronto.">
   <meta property="og:title" content="Adele Hair & Beauty">
@@ -28,7 +29,7 @@
   <!-- Favicon 링크 추가 -->
   <link rel="icon" type="image/png" href="optimized-images/favicon/favicon_adele.png">
   <!-- 기존 스타일시트 및 폰트 링크 -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=hero-yt">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Jost:wght@300;400;500&family=Roboto:wght@400;500&display=swap"
@@ -210,16 +211,18 @@
   <main>
     <section id="home" class="hero">
       <div class="hero-video-container">
-        <iframe 
+        <iframe
           class="hero-video"
-          src="https://www.youtube.com/embed/gZ0ZdWojYrk?autoplay=1&mute=1&loop=1&playlist=gZ0ZdWojYrk&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" 
-          frameborder="0" 
-          allow="autoplay; encrypted-media" 
+          src="https://www.youtube.com/embed/tMHPRKpBH1k?autoplay=1&mute=1&loop=1&playlist=tMHPRKpBH1k&controls=0&rel=0&modestbranding=1&playsinline=1"
+          title="Adele Hair & Beauty hero video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen>
         </iframe>
       </div>
     
-      <!-- Fallback Image (영상이 뜨기 전 보여줄 배경) -->
+      <!-- Fallback Image (영상이 뜨기 전 / 미지원 브라우저용) -->
       <img src="optimized-images/bg1.webp" alt="Adele Hair & Beauty Salon" class="hero-background hero-fallback">
     
       <div class="hero-content">
