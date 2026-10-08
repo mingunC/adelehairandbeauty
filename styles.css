@@ -3228,17 +3228,32 @@ footer {
     margin: 0 auto;
 }
 
-.about-image-minimal {
-    margin-bottom: 60px;
+.about-locations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 0 0 60px;
 }
 
-.about-image-minimal img {
+.about-location {
+    margin: 0;
+}
+
+.about-location figcaption {
+    font-family: 'Castoro Titling', serif;
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.about-location img {
     width: 100%;
-    height: auto;
-    max-height: 500px;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
+    object-position: center;
     display: block;
-    /* Clean image without shadow for modern look */
 }
 
 .about-philosophy {
@@ -3303,6 +3318,11 @@ footer {
 
     .about-philosophy h3 {
         font-size: 1.5rem;
+    }
+
+    .about-locations {
+        grid-template-columns: 1fr;
+        gap: 32px;
     }
 }
 
